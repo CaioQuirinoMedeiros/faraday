@@ -22,7 +22,7 @@ const contentMicrocopies = [
   "511 questões de Física do ENEM",
   "Organizadas por tópicos",
   "Gabarito e resoluções em vídeo",
-  "Material atualizado",
+  "Estatísticas dos conteúdos",
 ]
 
 const fileUrl =
