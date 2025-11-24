@@ -1,0 +1,73 @@
+.document {
+  counter-reset: main-list;
+  color: #dfdfdf;
+  line-height: 1.75;
+
+  h1 {
+    color: #fff;
+  }
+
+  ol {
+    list-style-type: none; /* Remove default list markers */
+    list-style-position: outside;
+    position: relative;
+  }
+
+  li {
+    margin: 12px 0 12px 0;
+    text-indent: 22px;
+  }
+
+  li > strong {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #fff;
+  }
+
+  ol > li {
+    counter-increment: main-list; /* Increment the main list counter */
+    margin: 12px 0 12px 0;
+  }
+
+  ol > li::before {
+    content: counters(main-list, ".") ". "; /* Display the counter with dots */
+    counter-increment: item;
+    position: absolute;
+    color: #ababab;
+    left: -22px;
+    font-size: 1.125rem;
+  }
+
+  /* For nested lists, you'll want to reset the counter for each level */
+  ol ol {
+    counter-reset: sub-list; /* Reset sub-list counter */
+  }
+
+  ol ol > li {
+    counter-increment: sub-list; /* Increment sub-list counter */
+    text-indent: 34px;
+  }
+
+  ol ol > li::before {
+    content: counters(main-list, ".") "." counters(sub-list, ".") ". "; /* Combine counters */
+    left: -34px;
+    font-size: 1rem;
+  }
+
+  /* For further nesting, you can extend this pattern */
+  ol ol ol {
+    counter-reset: sub-sub-list;
+  }
+
+  ol ol ol > li {
+    counter-increment: sub-sub-list;
+    text-indent: 64px;
+  }
+
+  ol ol ol > li::before {
+    content: counters(main-list, ".") "." counters(sub-list, ".") "."
+      counters(sub-sub-list, ".") ". ";
+    left: -54px;
+    text-indent: 64px;
+  }
+}

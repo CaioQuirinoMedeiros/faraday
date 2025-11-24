@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Redirect /avisos → /termos
+RewriteRule ^avisos/?$ /termos [R=301,L]
+
+# Redirect /fat → /#apostila
+RewriteRule ^fat/?$ /#apostila [R=301,L]
+
+ErrorDocument 404 /404.html
