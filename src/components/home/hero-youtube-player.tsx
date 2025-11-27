@@ -22,7 +22,7 @@ export function HeroYoutubePlayer() {
         webp={true}
         lazyLoad={false}
         rel="preload"
-        thumbnail="/images/plataforma/inicio.png"
+        thumbnail="/images/thumb-video-hero.png"
         announce="Assistir"
       />
     </div>
