@@ -14,7 +14,7 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
 })
 
-const appUrl = "https://b61d4a226597.ngrok-free.app"
+const appUrl = "https://fisiquei.com.br"
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
@@ -35,6 +35,8 @@ export const metadata: Metadata = {
   },
 }
 
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -42,19 +44,48 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt" className="overflow-y-auto">
+      <head>
+        {GTM_ID && (
+          <Script
+            id="gtm-dataLayer"
+            strategy="beforeInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];`,
+            }}
+          />
+        )}
+
+        {GTM_ID && (
+          <Script
+            id="gtm-script"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`,
+            }}
+          />
+        )}
+      </head>
       <body
         className={`${inter.variable} ${poppins.variable} min-h-dvh antialiased bg-background font-sans max-w-dvw`}
       >
+        {GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        )}
+
         {children}
+
         <Script
           id="mautic-tracking"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,t,u,n,a,m){w['MauticTrackingObject']=n;
-w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)},a=d.createElement(t),
-m=d.getElementsByTagName(t)[0];a.async=1;a.src=u;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://mkt.fisiquei.com.br/mtc.js','mt');
-mt('send', 'pageview');`,
+            __html: `(function(w,d,t,u,n,a,m){w['MauticTrackingObject']=n;w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)},a=d.createElement(t),m=d.getElementsByTagName(t)[0];a.async=1;a.src=u;m.parentNode.insertBefore(a,m)})(window,document,'script','https://mkt.fisiquei.com.br/mtc.js','mt');mt('send', 'pageview');`,
           }}
         />
       </body>

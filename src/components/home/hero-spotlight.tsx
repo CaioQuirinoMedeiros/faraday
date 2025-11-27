@@ -6,6 +6,7 @@ import { Spotlight } from "./spotlight"
 import ImageSlideshow from "./image-slideshow"
 import { HeroYoutubePlayer } from "./hero-youtube-player"
 import { DelayRenderWrapper } from "./delay-appearence-wrapper"
+import Link from "next/link"
 
 const container: Variants = {
   hidden: {},
@@ -111,13 +112,12 @@ export function HeroSpotlight() {
               >
                 Comece grátis
               </a>
-              <a
+              <Link
                 href="/#planos"
-                target="_blank"
                 className="flex items-center gap-3 px-4 md:px-6 py-2 md:py-3 bg-gray-950/15 border border-gray-400 text-white/95 font-bold rounded-lg text-base hover:scale-105 transition-all hover:bg-gray-950/50 hover:text-white text-center"
               >
                 Ver planos <ArrowRightIcon className="size-4" />
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>
