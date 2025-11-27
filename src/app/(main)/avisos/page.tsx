@@ -4,7 +4,8 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Termos de Uso e Política de Privacidade",
-  description: "Confira os Termos de Uso e a Política de Privacidade do Fisiquei",
+  description:
+    "Confira os Termos de Uso e a Política de Privacidade do Fisiquei",
 }
 
 export default function AvisosPage() {
