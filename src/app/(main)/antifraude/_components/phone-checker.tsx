@@ -7,14 +7,36 @@ import { TriangleAlertIcon } from "lucide-react"
 import * as React from "react"
 
 const validPhones = [
-  "61999667745",
-  "6199667745",
-  "61982237388",
-  "6182237388",
-  "61996689386",
-  "6196689386",
-  "61993756696",
-  "6193756696",
+  {
+    key: "caio-pessoal",
+    name: "Número pessoal do Caio Quirino",
+    phones: ["(61) 99966-7745", "(61) 9966-7745"],
+  },
+  {
+    key: "thales-pessoal",
+    name: "Número pessoal do professor Thales Quirino",
+    phones: ["(61) 98133-1440", "(61) 8133-1440"],
+  },
+  {
+    key: "thales-fisiquei",
+    name: "Número do professor Thales Quirino",
+    phones: ["(61) 9985-4578", "(61) 8223-7388"],
+  },
+  {
+    key: "suporte",
+    name: "Número do Suporte",
+    phones: ["(61) 99668-9386", "(61) 9668-9386"],
+  },
+  {
+    key: "tim1-api-oficial",
+    name: "Atendimento 1",
+    phones: ["(61) 98223-7388", "(61) 8223-7388"],
+  },
+  {
+    key: "claro-2",
+    name: "Atendimento 2",
+    phones: ["(61) 99375-6696", "(61) 9375-6696"],
+  },
 ]
 
 export function PhoneChecker() {
@@ -27,7 +49,13 @@ export function PhoneChecker() {
 
     if (rawPhone.length < 10) return "undefined"
 
-    if (validPhones.includes(rawPhone)) {
+    const validPhone = validPhones.find(phoneItem => {
+      return phoneItem.phones.some(phoneNumber => {
+        return rawPhone === phoneNumber.replace(/\D/g, "")
+      })
+    })
+
+    if (!!validPhone) {
       return "valid"
     } else {
       return "invalid"
@@ -54,8 +82,10 @@ export function PhoneChecker() {
       <div
         className={cn(
           "rounded-lg px-4 py-3 text-center border border-transparent",
-          validationResult === "valid" && "bg-green-100 border-green-600 text-green-600",
-          validationResult === "invalid" && "bg-red-100 border-red-600 text-red-600",
+          validationResult === "valid" &&
+            "bg-green-100 border-green-600 text-green-600",
+          validationResult === "invalid" &&
+            "bg-red-100 border-red-600 text-red-600"
         )}
       >
         {validationResult === "undefined" && (
@@ -65,7 +95,8 @@ export function PhoneChecker() {
           <span className="flex gap-1.5 items-center font-medium">
             <TriangleAlertIcon className="size-5" />
             <span>
-              <strong className="font-bold">ATENÇÃO:</strong> Esse número NÃO pertence ao Fisiquei!
+              <strong className="font-bold">ATENÇÃO:</strong> Esse número NÃO
+              pertence ao Fisiquei!
             </span>
           </span>
         )}
@@ -73,7 +104,8 @@ export function PhoneChecker() {
           <span className="flex gap-1.5 items-center font-medium">
             <TriangleAlertIcon className="size-5" />
             <span>
-              <strong className="font-bold">VERIFICADO:</strong> Esse número é sim do Fisiquei 😉
+              <strong className="font-bold">VERIFICADO:</strong> Esse número é
+              sim do Fisiquei 😉
             </span>
           </span>
         )}

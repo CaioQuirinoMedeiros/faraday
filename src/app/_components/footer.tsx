@@ -40,6 +40,7 @@ const links = [
   { label: "Depoimentos", href: "/#depoimentos" },
   { label: "Planos e preços", href: "/#planos" },
   { label: "FAQ", href: "/#faq" },
+  { label: "Antifraude", href: "/antifraude" },
 ]
 
 export function Footer() {
