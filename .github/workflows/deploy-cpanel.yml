@@ -34,42 +34,32 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install -y expect
       
-      - name: Write encrypted private key to disk (ephemeral)
+      - name: Write encrypted private key safely
         run: |
           mkdir -p ~/.ssh
           umask 077
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-
-      - name: Debug paths
-        run: |
-          echo "HOME is: $HOME"
-          ls -la $HOME
-          ls -la ~/.ssh || echo "~/.ssh does not exist"
-
+          ls -la ~/.ssh
 
       - name: Start ssh-agent and add encrypted key using expect
         id: add_key
         run: |
-          # start a fresh ssh-agent
-          eval "$(ssh-agent -s)" >/dev/null
-          export SSH_AUTH_SOCK
-          export SSH_AGENT_PID
+          ls -la ~/.ssh
+          eval "$(ssh-agent -s)"
 
-          # use expect to feed the passphrase to ssh-add
-          /usr/bin/expect <<'EXPECT_EOF'
-          set timeout 30
+          /usr/bin/expect <<'EOF'
+          set timeout 20
           spawn ssh-add ~/.ssh/deploy_key
           expect {
-            -re "Enter passphrase.*:" {
-              send -- "${SSH_PASSPHRASE}\r"
+            "Enter passphrase for*" {
+              send "$env(SSH_PASSPHRASE)\r"
               exp_continue
             }
             eof
           }
-          EXPECT_EOF
+          EOF
 
-          # verify key added
           ssh-add -l
         env:
           SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
