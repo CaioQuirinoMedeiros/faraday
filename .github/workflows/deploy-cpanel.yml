@@ -38,15 +38,17 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           umask 077
-          printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" | sed 's/\r$//' > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ls -la ~/.ssh
+          echo "Wrote key:"
+          ls -la ~/.ssh/deploy_key
 
       - name: Start ssh-agent and add encrypted key using expect
         id: add_key
         run: |
-          ls -la ~/.ssh
           eval "$(ssh-agent -s)"
+
+          ls -la ~/.ssh
 
           /usr/bin/expect <<'EOF'
           set timeout 20
