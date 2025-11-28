@@ -37,11 +37,18 @@ jobs:
       - name: Write encrypted private key safely
         run: |
           mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
           umask 077
-          printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" | sed 's/\r$//' > ~/.ssh/deploy_key
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           echo "Wrote key:"
           ls -la ~/.ssh/deploy_key
+
+      - name: Setup SSH Agent with encrypted key
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-passphrase: ${{ secrets.SSH_PASSPHRASE }}
 
       - name: Start ssh-agent and add encrypted key using expect
         id: add_key
