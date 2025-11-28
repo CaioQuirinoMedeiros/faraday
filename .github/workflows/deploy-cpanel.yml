@@ -7,6 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: cpanel
     env:
       SSH_HOST: ${{ secrets.SSH_HOST }}
       SSH_USER: ${{ secrets.SSH_USER }}
@@ -27,6 +28,44 @@ jobs:
 
       - name: Build & export (Next static)
         run: npm run build
+
+      - name: Prepare SSH tooling (install expect)
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y expect
+      
+      - name: Write encrypted private key to disk (ephemeral)
+        run: |
+          mkdir -p ~/.ssh
+          umask 077
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+      - name: Start ssh-agent and add encrypted key using expect
+        id: add_key
+        run: |
+          # start a fresh ssh-agent
+          eval "$(ssh-agent -s)" >/dev/null
+          export SSH_AUTH_SOCK
+          export SSH_AGENT_PID
+
+          # use expect to feed the passphrase to ssh-add
+          /usr/bin/expect <<'EXPECT_EOF'
+          set timeout 30
+          spawn ssh-add ~/.ssh/deploy_key_enc
+          expect {
+            -re "Enter passphrase.*:" {
+              send -- "${SSH_PASSPHRASE}\r"
+              exp_continue
+            }
+            eof
+          }
+          EXPECT_EOF
+
+          # verify key added
+          ssh-add -l
+        env:
+          SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
    
       - name: Start ssh-agent and add encrypted key
         uses: webfactory/ssh-agent@v0.9.1
@@ -40,25 +79,30 @@ jobs:
           ssh-keyscan -p $SSH_PORT $SSH_HOST >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
 
-      - name: Send tarball over ssh and extract on server
+      - name: "Ensure remote tmp is fresh"
+        run: |
+          ssh -p $SSH_PORT -o StrictHostKeyChecking=yes $SSH_USER@$SSH_HOST "rm -rf '$REMOTE_TMP' && mkdir -p '$REMOTE_TMP'"
+
+      - name: Stream tar.gz to remote tmp
+        run: |
+          tar -C out -czf - . | ssh -p $SSH_PORT -o StrictHostKeyChecking=yes $SSH_USER@$SSH_HOST "tar -xzf - -C '$REMOTE_TMP'"
+
+      - name: Atomic swap
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
-          REMOTE_TMP: ${{ secrets.REMOTE_TMP_DIR }}
+          REMOTE_TMP_DIR: ${{ secrets.REMOTE_TMP_DIR }}
           REMOTE_DIR: ${{ secrets.REMOTE_DIR }}
         run: |
-          # ensure remote tmp folder is fresh
-          ssh -p $SSH_PORT -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST \
-          "set -euo pipefail
-          TIMESTAMP=\$(date +%s)
+          ssh -p $SSH_PORT -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "set -euo pipefail
           BACKUP_DIR='${REMOTE_DIR}_backup'
           # ensure target exists or not
           if [ -d '${REMOTE_DIR}' ]; then
             mv '${REMOTE_DIR}' \"\$BACKUP_DIR\"
           fi
           # move tmp into place
-          mv '${REMOTE_TMP}' '${REMOTE_DIR}'
+          mv '${REMOTE_TMP_DIR}' '${REMOTE_DIR}'
           # cleanup: remove zip if present and temp if any
-          rm -rf '${REMOTE_TMP}'
+          rm -rf '${REMOTE_TMP_DIR}'
           exit 0"
