@@ -13,7 +13,7 @@ jobs:
       SSH_USER: ${{ secrets.SSH_USER }}
       SSH_PORT: ${{ secrets.SSH_PORT }}
       REMOTE_DIR: ${{ secrets.REMOTE_DIR }}
-      REMOTE_TMP: ${{ secrets.REMOTE_TMP_DIR }}
+      REMOTE_TMP_DIR: ${{ secrets.REMOTE_TMP_DIR }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -52,7 +52,7 @@ jobs:
           # use expect to feed the passphrase to ssh-add
           /usr/bin/expect <<'EXPECT_EOF'
           set timeout 30
-          spawn ssh-add ~/.ssh/deploy_key_enc
+          spawn ssh-add ~/.ssh/deploy_key
           expect {
             -re "Enter passphrase.*:" {
               send -- "${SSH_PASSPHRASE}\r"
@@ -67,12 +67,6 @@ jobs:
         env:
           SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
    
-      - name: Start ssh-agent and add encrypted key
-        uses: webfactory/ssh-agent@v0.9.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
-
       - name: Add server to known_hosts
         run: |
           mkdir -p ~/.ssh
@@ -81,19 +75,13 @@ jobs:
 
       - name: "Ensure remote tmp is fresh"
         run: |
-          ssh -p $SSH_PORT -o StrictHostKeyChecking=yes $SSH_USER@$SSH_HOST "rm -rf '$REMOTE_TMP' && mkdir -p '$REMOTE_TMP'"
+          ssh -p $SSH_PORT -o StrictHostKeyChecking=yes $SSH_USER@$SSH_HOST "rm -rf '$REMOTE_TMP_DIR' && mkdir -p '$REMOTE_TMP_DIR'"
 
       - name: Stream tar.gz to remote tmp
         run: |
-          tar -C out -czf - . | ssh -p $SSH_PORT -o StrictHostKeyChecking=yes $SSH_USER@$SSH_HOST "tar -xzf - -C '$REMOTE_TMP'"
+          tar -C out -czf - . | ssh -p $SSH_PORT -o StrictHostKeyChecking=yes $SSH_USER@$SSH_HOST "tar -xzf - -C '$REMOTE_TMP_DIR'"
 
       - name: Atomic swap
-        env:
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
-          REMOTE_TMP_DIR: ${{ secrets.REMOTE_TMP_DIR }}
-          REMOTE_DIR: ${{ secrets.REMOTE_DIR }}
         run: |
           ssh -p $SSH_PORT -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "set -euo pipefail
           BACKUP_DIR='${REMOTE_DIR}_backup'
