@@ -29,50 +29,11 @@ jobs:
       - name: Build & export (Next static)
         run: npm run build
 
-      - name: Prepare SSH tooling (install expect)
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y expect
-      
-      - name: Write encrypted private key safely
-        run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          umask 077
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          echo "Wrote key:"
-          ls -la ~/.ssh/deploy_key
-
       - name: Setup SSH Agent with encrypted key
-        uses: webfactory/ssh-agent@v0.8.0
+        uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-passphrase: ${{ secrets.SSH_PASSPHRASE }}
 
-      - name: Start ssh-agent and add encrypted key using expect
-        id: add_key
-        run: |
-          eval "$(ssh-agent -s)"
-
-          ls -la ~/.ssh
-
-          /usr/bin/expect <<'EOF'
-          set timeout 20
-          spawn ssh-add ~/.ssh/deploy_key
-          expect {
-            "Enter passphrase for*" {
-              send "$env(SSH_PASSPHRASE)\r"
-              exp_continue
-            }
-            eof
-          }
-          EOF
-
-          ssh-add -l
-        env:
-          SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
-   
       - name: Add server to known_hosts
         run: |
           mkdir -p ~/.ssh
