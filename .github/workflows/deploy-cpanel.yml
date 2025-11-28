@@ -41,6 +41,13 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
 
+      - name: Debug paths
+        run: |
+          echo "HOME is: $HOME"
+          ls -la $HOME
+          ls -la ~/.ssh || echo "~/.ssh does not exist"
+
+
       - name: Start ssh-agent and add encrypted key using expect
         id: add_key
         run: |
