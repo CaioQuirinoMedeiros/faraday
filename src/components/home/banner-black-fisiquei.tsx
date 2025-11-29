@@ -27,7 +27,7 @@ export function BannerBlackFisiquei() {
 
   return (
     <div className="bg-primary bg-linear-to-r from-[#ffbc57] to-[#ffec81] text-primary-foreground">
-      <div className="relative max-w-[1440px] mx-auto px-6 md:px-10 py-2 flex flex-col sm:flex-row gap-y-4 gap-x-14 sm:items-center sm:justify-between">
+      <div className="relative max-w-[1440px] mx-auto px-6 md:px-6 py-2 flex flex-col sm:flex-row gap-y-4 gap-x-14 sm:items-center sm:justify-between">
         <div className="flex flex-col md:flex-row gap-x-5 gap-y-2 items-start md:items-center">
           <div className="flex flex-col">
             <strong className="tracking-tighter font-bold text-xl">
@@ -67,7 +67,7 @@ export function BannerBlackFisiquei() {
             </div>
           </div>
           <p className="hidden sm:block text-xs sm:text-right text-neutral/90">
-            Só até o final de novembro!
+            A oferta acaba dia 30/11 às 23:59
           </p>
         </div>
       </div>

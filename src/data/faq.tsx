@@ -64,6 +64,26 @@ const faqFormasPagamento: FaqItem = {
   ),
 }
 
+const faqRenovacao: FaqItem = {
+  key: "renovacao",
+  question: "Tem desconto para renovação de aluno/ex-aluno?",
+  answer: (
+    <>
+      A Black Fisiquei está dando 50% de desconto... Mas para{" "}
+      <strong>aluno ou ex-aluno o desconto é de 60%!</strong>{" "}
+      <a
+        target="_blank"
+        href="https://app.fisiquei.com.br/ofertas/extensivo-2026/checkout?coupon=RENOVABF60"
+        className="text-primary-lighter underline hover:opacity-80"
+      >
+        Clique aqui
+      </a>{" "}
+      para usar seu cupom RENOVABF60 (use o mesmo email do seu acesso atual para
+      validar o cupom corretamente)
+    </>
+  ),
+}
+
 const faqPossuiQuestoes: FaqItem = {
   key: "plataforma-possui-questoes",
   question: "A plataforma possui questões resolvidas?",
@@ -134,6 +154,7 @@ export const faqItems = [
   faqValorAcesso,
   faqSeguroSisu,
   faqFormasPagamento,
+  faqRenovacao,
   faqPossuiQuestoes,
   faqTirarDuvidas,
   faqAulasGravadas,

@@ -100,7 +100,7 @@ export function HeroSpotlight() {
           >
             <p className="text-base md:text-lg text-gray-300 mb-8 leading-relaxed text-center">
               O Fisiquei vai mudar a forma como você enxerga a Física.
-              Prepare-se para o <strong>ENEM e vestibulares</strong> com a
+              Prepare-se para o <strong className="text-primary-light">ENEM e vestibulares</strong> com a
               melhor plataforma do Brasil.
             </p>
 

@@ -15,7 +15,7 @@
 
   li {
     margin: 12px 0 12px 0;
-    text-indent: 22px;
+    text-indent: 26px;
   }
 
   li > strong {
@@ -34,7 +34,7 @@
     counter-increment: item;
     position: absolute;
     color: #ababab;
-    left: -22px;
+    left: -26px;
     font-size: 1.125rem;
   }
 

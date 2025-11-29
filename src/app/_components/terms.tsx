@@ -255,6 +255,43 @@ export function Terms(props: TermsProps) {
             </ol>
           </li>
           <li>
+            <strong>Programa de Indicação</strong>
+            <ol>
+              <li>
+                A plataforma Fisiquei conta um Programa de Indicação onde cada
+                usuário pode obter seu link de indicação para compartilhar. Uma
+                compra aprovada a partir o link de indicação, irá gerar pontos
+                de indicação (“pontos”) para o usuário indicador. Esses pontos
+                podem ser usados para trocar por prêmios disponíveis na
+                plataforma.
+              </li>
+              <li>
+                A pontuação recebida pelo usuário indicador é de aproximadamente
+                5% do valor final da compra realizada pelo usuário indicado.
+                Isso significa que a pontuação varia de acordo com o valor do
+                plano escolhido e possíveis descontos aplicados. Algumas ofertas
+                podem não ter porcentagem de pontuação, e a Fisiquei pode
+                alterar a porcentagem de pontos de qualquer oferta a qualquer
+                momento e sem aviso prévio.
+              </li>
+              <li>
+                O recebimento dos pontos acontece de forma automática no
+                reconhecimento da compra realizada por um link de indicação.
+                Compras realizadas sem o uso correto do link de indicação não
+                geram pontos. Há um prazo de 10 dias para a liberação do uso dos
+                pontos, pois, neste período, caso a compra seja reembolsada ou
+                cancelada por qualquer motivo, os pontos serão suspensos
+              </li>
+              <li>
+                A Fisiquei reserva-se o direito de alterar, suspender ou
+                cancelar o Programa de Indicação a qualquer momento, sem aviso
+                prévio. Também reserva-se o direito de cancelar qualquer
+                pontuação de um usuário ao identificar mal uso do Programa de
+                Indicação por qualquer motivo.
+              </li>
+            </ol>
+          </li>
+          <li>
             <strong>Modificações</strong>
             <ol>
               <li>
