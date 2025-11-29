@@ -66,6 +66,8 @@ export function DownloadContentSection() {
     }
 
     fetch("https://app.fisiquei.com.br/api/fatality-enem", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
     }).catch((error) => {
       console.log("Houve um erro ao enviar os dados:", error)
