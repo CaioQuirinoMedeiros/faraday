@@ -35,9 +35,10 @@ export function PlanCard(props: PlanCardProps) {
   const url = new URL(
     `https://app.fisiquei.com.br/api/ofertas/${internalName}/checkout`
   )
-  const searchParams = new URLSearchParams({
-    coupon: couponData?.couponCode || "",
-  })
+  const searchParams = new URLSearchParams()
+  if (couponData) {
+    searchParams.set("coupon", couponData.couponCode)
+  }
   url.search = searchParams.toString()
   const checkoutUrl = url.toString()
 
@@ -160,8 +161,7 @@ export function PlanCard(props: PlanCardProps) {
 
         {!free && (
           <span className="flex gap-1 justify-center items-center text-sm text-white/50 mt-6 -mb-3">
-            <ShieldCheckIcon className="size-3.5" /> Garantia de 7 dias e Seguro
-            SiSU
+            <ShieldCheckIcon className="size-3.5" /> Garantia de 7 dias
           </span>
         )}
       </div>

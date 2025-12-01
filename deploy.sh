@@ -13,6 +13,7 @@ SSH_USER="${SSH_USER:-fisiqu16}"
 SSH_HOST="${SSH_HOST:-br.star4070.com.br}"
 SSH_PORT="${SSH_PORT:-215}"
 REMOTE_TMP="${REMOTE_TMP:-/home/$SSH_USER/public_html_tmp}"
+REMOTE_BACKUP="${REMOTE_BACKUP:-/home/$SSH_USER/public_html_backup}"
 REMOTE_DIR="${REMOTE_DIR:-/home/$SSH_USER/public_html}"
 HEALTHCHECK_URL="${HEALTHCHECK_URL:-}"
 BUILD_CMD="${BUILD_CMD:-npm ci && npm run build}"
@@ -51,7 +52,6 @@ fi
 chmod 600 "$KEY_PATH"
 echo "SSH key found!"
 
-
 # ensure .ssh/known_hosts has the host (best-effort)
 echo "Ensuring .ssh/known_hosts has the host..."
 mkdir -p "$HOME/.ssh"
@@ -75,10 +75,21 @@ echo "Tarball streamed to remote tmp!"
 echo "Swapping $REMOTE_TMP -> $REMOTE_DIR"
 ssh -i "$KEY_PATH" -p "$SSH_PORT" -o StrictHostKeyChecking=yes "$SSH_USER@$SSH_HOST" bash -s <<EOF
 set -euo pipefail
-BACKUP='${REMOTE_DIR}_backup'
-if [ -d '${REMOTE_DIR}' ]; then
-  mv '${REMOTE_DIR}' "\$BACKUP"
+
+# remove old backup if exists
+if [ -d '${REMOTE_BACKUP}' ]; then
+  echo "Removing backup: ${REMOTE_BACKUP}"
+  rm -rf "${REMOTE_BACKUP}"
 fi
+
+# move current public_html to backup (if exists)
+if [ -d '${REMOTE_DIR}' ]; then
+  echo "Creating backup"
+  mv '${REMOTE_DIR}' '${REMOTE_BACKUP}'
+fi
+
 mv '${REMOTE_TMP}' '${REMOTE_DIR}'
-echo "SWAPPED -> ${REMOTE_DIR} (backup: \$BACKUP)"
+
+echo "SWAPPED -> ${REMOTE_DIR}"
+echo "Backup: ${REMOTE_BACKUP}"
 EOF

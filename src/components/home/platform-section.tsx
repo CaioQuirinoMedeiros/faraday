@@ -1,5 +1,6 @@
 import { CheckCircleIcon } from "lucide-react"
 import { platformFeatures } from "@/data/features"
+import { cn } from "@/utils/styles"
 
 export function PlatformSection() {
   return (
@@ -19,7 +20,7 @@ export function PlatformSection() {
         </div>
 
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-y-8 gap-x-8">
-          {platformFeatures.map((platformFeature) => {
+          {platformFeatures.map((platformFeature, featureIndex) => {
             const {
               icon: FeatureIcon,
               title,
@@ -34,7 +35,10 @@ export function PlatformSection() {
               <article
                 key={title}
                 style={{ "--feature-color": color } as any}
-                className="group relative overflow-hidden flex flex-col gap-x-8 bg-card rounded-xl ring-2 ring-(--feature-color)/20 hover:ring-(--feature-color)/40 transition-all"
+                className={cn(
+                  "group relative overflow-hidden flex flex-col gap-x-8 bg-card rounded-md ring-2 ring-(--feature-color)/20 hover:ring-(--feature-color)/40 transition-all",
+                  featureIndex % 2 === 0 ? "rounded-tr-4xl rounded-bl-4xl" : "rounded-tl-4xl rounded-br-4xl"
+                )}
               >
                 <div className="relative aspect-video min-w-[400px] bg-muted shrink-0 overflow-hidden">
                   <img
