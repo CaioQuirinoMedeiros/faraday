@@ -5,13 +5,10 @@ import { PlatformSection } from "@/components/home/platform-section"
 import { HeroSpotlight } from "@/components/home/hero-spotlight"
 import { DownloadContentSection } from "@/components/home/download-content-section"
 import { PricingSection } from "@/components/home/pricing-section"
-import { BannerBlackFisiquei } from "@/components/home/banner-black-fisiquei"
 
 export default function Home() {
   return (
     <main className="">
-      <BannerBlackFisiquei />
-
       <HeroSpotlight />
 
       <PlatformSection />

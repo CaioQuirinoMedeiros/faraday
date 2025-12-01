@@ -1,17 +1,33 @@
 "use client"
 
-import { BlackFridayCalendar } from "@/assets/icons"
 import { useIsMounted } from "@/hooks/use-is-mounted"
-import { ArrowRightIcon, XIcon } from "lucide-react"
+import { ArrowRightIcon, CalendarIcon } from "lucide-react"
 import Link from "next/link"
 import { useTimer } from "react-timer-hook"
 
-const blackEndDate = new Date(2025, 10, 30, 23, 59, 59)
-export function BannerBlackFisiquei() {
+interface TopBannerProps {
+  endDate: Date
+  endText: string
+  ctaTitle: string
+  ctaSubtitle: string
+  ctaButtonText: string
+  ctaButtonLink: string
+}
+
+export function TopBanner(props: TopBannerProps) {
+  const {
+    ctaButtonLink,
+    ctaButtonText,
+    ctaSubtitle,
+    ctaTitle,
+    endDate,
+    endText,
+  } = props
+
   const { isMounted } = useIsMounted()
 
   const { days, hours, minutes, seconds, totalMilliseconds } = useTimer({
-    expiryTimestamp: blackEndDate,
+    expiryTimestamp: endDate,
     autoStart: true,
   })
 
@@ -31,25 +47,25 @@ export function BannerBlackFisiquei() {
         <div className="flex flex-col md:flex-row gap-x-5 gap-y-2 items-start md:items-center">
           <div className="flex flex-col">
             <strong className="tracking-tighter font-bold text-xl">
-              BLACK FISIQUEI • 50% OFF
+              {ctaTitle}
             </strong>
             <span className="text-primary-foreground/85 text-sm">
-              Aproveite o maior desconto do ano!
+              {ctaSubtitle}
             </span>
           </div>
 
           <Link
-            href="/#plano-atual"
+            href={ctaButtonLink}
             className="bg-neutral text-white text-sm rounded-md px-2.5 py-1.5 text-center font-bold flex items-center gap-2 border border-neutral hover:opacity-90 transition-all hover:scale-105"
           >
-            Ver oferta
+            {ctaButtonText}
             <ArrowRightIcon className="size-4" />
           </Link>
         </div>
 
         <div className="flex flex-col items-start sm:items-end gap-1">
           <div className="flex items-center gap-3 rounded-lg bg-white/50 px-2.5 py-1.5 border border-neutral/20">
-            <BlackFridayCalendar className="size-6" />
+            <CalendarIcon className="size-6" />
             <div className="flex flex-row gap-3">
               {countdownItems.map((countdownItem) => {
                 return (
@@ -67,7 +83,7 @@ export function BannerBlackFisiquei() {
             </div>
           </div>
           <p className="hidden sm:block text-xs sm:text-right text-neutral/90">
-            A oferta acaba dia 30/11 às 23:59
+            {endText}
           </p>
         </div>
       </div>
