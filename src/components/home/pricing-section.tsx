@@ -37,7 +37,7 @@ const plans: Plan[] = [
   {
     key: "plano-atual",
     name: "Extensivo 2026",
-    hotText: "Black Fisiquei ESTENTIDA",
+    hotText: "Black Fisiquei ESTENDIDA",
     description: "Acesso até 31/01/2027",
     cashDiscountInt: 110_00,
     cashPriceInt: 440_00,
