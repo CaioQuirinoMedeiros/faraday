@@ -1,7 +1,7 @@
 "use client"
 
 import { useIsMounted } from "@/hooks/use-is-mounted"
-import { ArrowRightIcon, CalendarIcon } from "lucide-react"
+import { ArrowRightIcon, TimerIcon } from "lucide-react"
 import Link from "next/link"
 import { useTimer } from "react-timer-hook"
 
@@ -65,7 +65,7 @@ export function TopBanner(props: TopBannerProps) {
 
         <div className="flex flex-col items-start sm:items-end gap-1">
           <div className="flex items-center gap-3 rounded-lg bg-white/50 px-2.5 py-1.5 border border-neutral/20">
-            <CalendarIcon className="size-6" />
+            <TimerIcon className="size-5" />
             <div className="flex flex-row gap-3">
               {countdownItems.map((countdownItem) => {
                 return (

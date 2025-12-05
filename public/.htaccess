@@ -2,6 +2,7 @@ RewriteEngine On
 
 # Redirect /avisos → /termos
 RewriteRule ^avisos/?$ /termos [R=301,L]
+RewriteRule ^wp-content/uploads/2024/03/Fatality-ENEM-FISICA-Versao-005.pdf/?$ /#apostila [R=301,L]
 
 # Redirect /fat → /#apostila
 RewriteRule ^fat/?$ /#apostila [R=301,L]

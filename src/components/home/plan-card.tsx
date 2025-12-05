@@ -58,7 +58,7 @@ export function PlanCard(props: PlanCardProps) {
       id={plan.key}
     >
       {!!hotText && (
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 border border-primary-dark shadow-sm -translate-y-1/2 flex items-center gap-1.5 text-xs font-semibold bg-primary text-primary-foreground rounded-full px-2.5 py-1">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 border border-primary-dark shadow-sm -translate-y-1/2 flex items-center gap-1.5 text-xs font-semibold bg-primary text-primary-foreground rounded-full px-2.5 py-1 whitespace-nowrap">
           <FlameIcon className="size-3.5" strokeWidth={3} />
           {hotText}
         </div>
@@ -161,7 +161,7 @@ export function PlanCard(props: PlanCardProps) {
 
         {!free && (
           <span className="flex gap-1 justify-center items-center text-sm text-white/50 mt-6 -mb-3">
-            <ShieldCheckIcon className="size-3.5" /> Garantia de 7 dias
+            <ShieldCheckIcon className="size-3.5" /> Garantia de 7 dias e Seguro SiSU
           </span>
         )}
       </div>

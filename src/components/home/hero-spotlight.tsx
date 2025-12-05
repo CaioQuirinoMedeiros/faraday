@@ -38,6 +38,46 @@ export function HeroSpotlight() {
       <Spotlight />
 
       <div className="relative max-w-7xl w-full mx-auto pt-20 px-6 flex flex-col items-center z-2">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.5, duration: 2, ease: "easeOut" }}
+          className="hidden lg:block"
+        >
+          <motion.img
+            src="/images/black-friday/bf-50.png"
+            className="absolute left-[40px] w-[200px] object-contain top-[60px] opacity-40"
+            initial={{ y: 0 }}
+            animate={{ y: 20 }}
+            transition={{
+              duration: 6,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 3.2, duration: 2.4, ease: "easeOut" }}
+          className="hidden lg:block"
+        >
+          <motion.img
+            src="/images/black-friday/bf-simple.png"
+            className="absolute right-[28px] w-[200px] object-contain top-[300px] opacity-30"
+            initial={{ y: 16 }}
+            animate={{ y: 0 }}
+            transition={{
+              delay: 2,
+              duration: 6,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+          />
+        </motion.div>
+
         <div className="flex flex-col items-center max-w-[600px] mb-12 md:mb-20">
           <motion.div className="flex flex-col items-center" variants={item}>
             <div className="text-primary flex gap-1.5 items-center justify-center mb-4 px-3 py-1 bg-primary/10 border border-primary rounded-full text-sm">
@@ -87,10 +127,10 @@ export function HeroSpotlight() {
           className="w-[calc(100%+24px)] sm:w-full -mb-[140px]"
         >
           <div className="relative z-20 overflow-hidden rounded-[12px] border-10 border-[rgb(14,14,16,1)] bg-transparent shadow-[0_0_8px_0px_rgba(140,240,240,0.15)]">
-            <div className="relative w-full aspect-[168/89] rounded-[6px] overflow-hidden">
+            {/* <div className="relative w-full aspect-[168/89] rounded-[6px] overflow-hidden">
               <ImageSlideshow />
-            </div>
-            {/* <HeroYoutubePlayer /> */}
+            </div> */}
+            <HeroYoutubePlayer />
           </div>
         </motion.div>
       </div>
