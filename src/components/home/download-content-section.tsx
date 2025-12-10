@@ -168,12 +168,14 @@ export function DownloadContentSection() {
                   name="name"
                   value={name}
                   onChangeValue={setName}
+                  maskFunction={value => value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ' -]/g, '')}
                   type="text"
                   required
                   autoComplete="name"
                   spellCheck={false}
                   autoCapitalize="words"
                   placeholder="João da Silva"
+                  pattern="^[^@]{1,}$"
                 />
               </div>
               <div className="flex flex-col gap-2">

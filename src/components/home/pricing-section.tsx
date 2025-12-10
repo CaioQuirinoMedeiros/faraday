@@ -139,7 +139,7 @@ export function PricingSection() {
                 </p>
                 <p className="text-xs mt-2 font-medium">
                   Atenção: O Seguro SiSU é apenas para a oferta da Black
-                  Fisiquei, que vai até o dia 30/11.
+                  Fisiquei, que vai até o dia 12/12.
                 </p>
               </div>
             </div>
