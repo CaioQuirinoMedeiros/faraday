@@ -2,11 +2,7 @@
 
 import { Plan } from "@/@types/plans.types"
 import { PlanCard } from "./plan-card"
-import {
-  ArrowRightIcon,
-  RocketIcon,
-  ShieldCheckIcon,
-} from "lucide-react"
+import { ArrowRightIcon, RocketIcon, ShieldCheckIcon } from "lucide-react"
 
 const plans: Plan[] = [
   {
@@ -37,23 +33,15 @@ const plans: Plan[] = [
   {
     key: "plano-atual",
     name: "Extensivo 2026",
-    hotText: "Black Fisiquei ESTENDIDA",
     description: "Acesso até 31/01/2027",
     cashDiscountInt: 110_00,
-    cashPriceInt: 440_00,
+    cashPriceInt: 990_00,
     free: false,
-    couponData: {
-      couponCode: "BLACKFISIQUEI",
-      deductionAbsInt: 550_00,
-      endAt: new Date("2027-01-31"),
-      formattedCouponValue: "50%",
-      oldPriceInt: 1100_00,
-      startAt: new Date(),
-    },
+    couponData: null,
     ctaText: "Garantir minha vaga",
     ctaIcon: ArrowRightIcon,
     internalName: "extensivo-2026-padrao",
-    installment: { count: 12, valueInt: 45_83 },
+    installment: { count: 12, valueInt: 91_67 },
     features: [
       { description: "Todas as aulas disponíveis", checked: true },
       { description: "Acesso total ao Banco de Questões", checked: true },
@@ -116,30 +104,6 @@ export function PricingSection() {
                   Comprou e não gostou? Você pode solicitar o reembolso em até 7
                   dias após a compra e terá 100% do valor investido devolvido.
                   Sem burocracia e sem perguntas!
-                </p>
-              </div>
-            </div>
-
-            <div className="relative p-4 sm:p-6 rounded-2xl border border-primary bg-primary-lighter text-neutral flex gap-4 sm:gap-6 items-start max-w-[740px]">
-              <img
-                src="/images/selos/selo-garantia-sisu.png"
-                className="size-[60px] sm:size-[92px] object-contain"
-                alt="Selo de garantia SiSU"
-              />
-              <div className="text-justify sm:text-left">
-                <strong className="text-lg font-bold flex items-center gap-1 mb-1.5">
-                  <ShieldCheckIcon className="size-4.5" strokeWidth={3} />
-                  Seguro SiSU
-                </strong>
-                <p className="text-neutral/90 text-sm">
-                  Está esperando o SiSU 2026? Não tem problema! Em caso de
-                  aprovação, em até 3ª chamada, você pode solicitar seu
-                  reembolso total. É só nos mandar mensagem comprovando sua
-                  aprovação.
-                </p>
-                <p className="text-xs mt-2 font-medium">
-                  Atenção: O Seguro SiSU é apenas para a oferta da Black
-                  Fisiquei, que vai até o dia 12/12.
                 </p>
               </div>
             </div>
