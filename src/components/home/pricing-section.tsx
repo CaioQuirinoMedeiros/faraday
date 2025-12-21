@@ -19,14 +19,14 @@ const plans: Plan[] = [
     features: [
       { description: "Aulas dos primeiros módulos", checked: "partial" },
       {
-        description: "Acesso parcial ao Banco de Questões",
+        description: "Acesso limitado ao Banco de Questões",
         checked: "partial",
       },
       {
-        description: "Acesso de leitura do Fórum de Dúvidas",
-        checked: "partial",
+        description: "Acesso ao Fórum de Dúvidas",
+        checked: false,
       },
-      { description: "Estatísticas de respostas e aulas", checked: true },
+      { description: "Estatísticas de evolução e desempenho", checked: true },
       { description: "Acesso aos simuladores digitais", checked: true },
     ],
   },
@@ -46,7 +46,7 @@ const plans: Plan[] = [
       { description: "Todas as aulas disponíveis", checked: true },
       { description: "Acesso total ao Banco de Questões", checked: true },
       { description: "Acesso total ao Fórum de Dúvidas", checked: true },
-      { description: "Estatísticas de respostas e aulas", checked: true },
+      { description: "Estatísticas de evolução e desempenho", checked: true },
       { description: "Acesso aos simuladores digitais", checked: true },
       { description: "Exportação das listas em PDF", checked: true },
     ],

@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from "motion/react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 import {
   CheckIcon,
@@ -131,13 +130,7 @@ export function DownloadContentSection() {
           </span>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: -54 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          viewport={{ once: true, amount: 0.5 }}
-          className="relative z-20 rounded-xl px-5 sm:px-8 py-8 pt-12 bg-primary-lighter text-primary-foreground border border-primary shrink-0 mdx:w-[470px]"
-        >
+        <div className="relative z-20 rounded-xl px-5 sm:px-8 py-8 pt-12 bg-primary-lighter text-primary-foreground border border-primary shrink-0 mdx:w-[470px]">
           <div className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 size-12 rounded-xl flex items-center justify-center bg-primary text-primary-foreground border border-primary-lighter shadow-md">
             <DownloadIcon className="size-6" />
           </div>
@@ -168,7 +161,9 @@ export function DownloadContentSection() {
                   name="name"
                   value={name}
                   onChangeValue={setName}
-                  maskFunction={value => value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ' -]/g, '')}
+                  maskFunction={(value) =>
+                    value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ' -]/g, "")
+                  }
                   type="text"
                   required
                   autoComplete="name"
@@ -226,7 +221,7 @@ export function DownloadContentSection() {
               Seus dados estão protegidos
             </p>
           </form>
-        </motion.div>
+        </div>
       </div>
 
       <div className="hidden xl:block absolute inset-y-0 h-[110%] max-w-[500px] right-0 z-10">
