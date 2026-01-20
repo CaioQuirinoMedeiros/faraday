@@ -35,13 +35,21 @@ const plans: Plan[] = [
     name: "Extensivo 2026",
     description: "Acesso até 31/01/2027",
     cashDiscountInt: 110_00,
-    cashPriceInt: 990_00,
+    cashPriceInt: 550_00,
     free: false,
-    couponData: null,
+    couponData: {
+      couponCode: "PROMOSISU",
+      deductionAbsInt: 400_00,
+      endAt: new Date("2026-02-13T20:59:59Z"),
+      formattedCouponValue: "R$ 440,00",
+      oldPriceInt: 1_100_00,
+      startAt: new Date("2026-01-06T00:00:00Z"),
+    },
+    hotText: "Promoção SiSU",
     ctaText: "Garantir minha vaga",
     ctaIcon: ArrowRightIcon,
     internalName: "extensivo-2026-padrao",
-    installment: { count: 12, valueInt: 91_67 },
+    installment: { count: 12, valueInt: 55_00 },
     features: [
       { description: "Todas as aulas disponíveis", checked: true },
       { description: "Acesso total ao Banco de Questões", checked: true },
@@ -107,6 +115,28 @@ export function PricingSection() {
                 </p>
               </div>
             </div>
+
+            {/* <div className="relative p-4 sm:p-6 rounded-2xl border border-primary bg-primary-lighter text-neutral flex gap-4 sm:gap-6 items-start max-w-[740px]">
+              <img
+                src="/images/selos/selo-garantia-sisu.png"
+                className="size-[60px] sm:size-[92px] object-contain"
+                alt="Selo de garantia SiSU"
+              />
+              <div className="text-justify sm:text-left">
+                <strong className="text-lg font-bold flex items-center gap-1 mb-1.5">
+                  <ShieldCheckIcon className="size-4.5" strokeWidth={3} />
+                  Seguro SiSU
+                </strong>
+                <p className="text-neutral/90 text-sm">
+                  Ainda esperando as inscrições e resultado do SiSU? Não tem problema! Você pode solicitar
+                  reembolso total em caso de aprovação em até 3ª chamada! É só
+                  nos mandar mensagem comprovando sua aprovação.
+                </p>
+                <p className="text-xs mt-2 font-medium">
+                  Atenção: O Seguro SiSU é apenas para o 1º lote da Promoção SiSU, que vai até o dia 18/01/2026.
+                </p>
+              </div>
+            </div> */}
           </div>
         </div>
       </div>
