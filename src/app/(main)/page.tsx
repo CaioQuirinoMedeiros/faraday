@@ -12,11 +12,11 @@ export default function Home() {
     <main className="">
       <TopBanner
         ctaTitle="Promoção SiSU"
-        ctaSubtitle="40% OFF no 2º LOTE!"
+        ctaSubtitle="30% OFF no 3º LOTE!"
         ctaButtonLink="https://app.fisiquei.com.br/api/ofertas/extensivo-2026-padrao/checkout?coupon=PROMOSISU"
         ctaButtonText="Garantir minha vaga"
-        endDate={new Date(2026, 0, 28, 23, 59, 59)}
-        endText="2º lote até 28/01/2026"
+        endDate={new Date(2026, 1, 5, 23, 59, 59)}
+        endText="3º lote até 05/02/2026"
       />
 
       <HeroSpotlight />

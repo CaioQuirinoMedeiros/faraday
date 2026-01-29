@@ -11,7 +11,6 @@ export type Plan = {
   features: { checked: boolean | "partial"; description: string }[]
   couponData: null | {
     oldPriceInt: number
-    deductionAbsInt: number
     couponCode: string
     formattedCouponValue: string
     endAt: Date
