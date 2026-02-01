@@ -24,7 +24,7 @@ export default function InscricaoConcluidaPage() {
             Seu acesso ao curso Extensivo já foi liberado! Antes de mais nada,
             preencha por favor a{" "}
             <a
-              href="https://forms.gle/Sg7HA7nmavZd43ju64"
+              href="https://forms.gle/MiXEe1FymSJCVLRB6"
               className="text-[rgb(45,199,109)] font-semibold hover:opacity-75 underline transition-opacity"
             >
               ficha do aluno
