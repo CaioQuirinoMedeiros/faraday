@@ -15,13 +15,17 @@
 
   li {
     margin: 12px 0 12px 0;
-    text-indent: 26px;
+    text-indent: 32px;
   }
 
   li > strong {
     font-weight: 600;
     font-size: 1.125rem;
     color: #fff;
+  }
+
+  li li > strong {
+    font-size: inherit;
   }
 
   ol > li {
@@ -34,7 +38,7 @@
     counter-increment: item;
     position: absolute;
     color: #ababab;
-    left: -26px;
+    left: -32px;
     font-size: 1.125rem;
   }
 
@@ -45,12 +49,12 @@
 
   ol ol > li {
     counter-increment: sub-list; /* Increment sub-list counter */
-    text-indent: 34px;
+    text-indent: 40px;
   }
 
   ol ol > li::before {
     content: counters(main-list, ".") "." counters(sub-list, ".") ". "; /* Combine counters */
-    left: -34px;
+    left: -40px;
     font-size: 1rem;
   }
 

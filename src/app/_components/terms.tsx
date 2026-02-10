@@ -16,8 +16,10 @@ export function Terms(props: TermsProps) {
 
       <div className={cn("text-justify", styles.document)}>
         <ol className="[&>li]:mt-6!">
-          <li>
-            <strong>Introdução</strong>
+          <li id="introducao">
+            <strong>
+              <a href="#introducao">Introdução</a>
+            </strong>
             <ol>
               <li>
                 Este contrato (“Contrato”) é celebrado entre o usuário
@@ -36,8 +38,10 @@ export function Terms(props: TermsProps) {
               </li>
             </ol>
           </li>
-          <li>
-            <strong>Descrição do Serviço</strong>
+          <li id="descricao-do-servico">
+            <strong>
+              <a href="#descricao-do-servico">Descrição do Serviço</a>
+            </strong>
             <ol>
               <li>
                 A Fisiquei oferece a plataforma online que disponibiliza
@@ -60,8 +64,10 @@ export function Terms(props: TermsProps) {
               </li>
             </ol>
           </li>
-          <li>
-            <strong>Planos e Pagamentos</strong>
+          <li id="planos-e-pagamentos">
+            <strong>
+              <a href="#planos-e-pagamentos">Planos e Pagamentos</a>
+            </strong>
             <ol>
               <li>
                 A Fisiquei oferece acesso gratuito à Plataforma, porém com
@@ -97,8 +103,12 @@ export function Terms(props: TermsProps) {
               </li>
             </ol>
           </li>
-          <li>
-            <strong>Política de Cancelamento e Reembolso</strong>
+          <li id="politica-de-cancelamento-e-reembolso">
+            <strong>
+              <a href="#politica-de-cancelamento-e-reembolso">
+                Política de Cancelamento e Reembolso
+              </a>
+            </strong>
             <ol>
               <li>
                 O Usuário tem direito ao reembolso integral até 7 (sete) dias
@@ -129,8 +139,12 @@ export function Terms(props: TermsProps) {
               </li>
             </ol>
           </li>
-          <li>
-            <strong>Resultados e Responsabilidades</strong>
+          <li id="resultados-e-responsabilidades">
+            <strong>
+              <a href="#resultados-e-responsabilidades">
+                Resultados e Responsabilidades
+              </a>
+            </strong>
             <ol>
               <li>
                 Ao abordar resultados em vestibulares, seja em divulgações,
@@ -181,8 +195,12 @@ export function Terms(props: TermsProps) {
               </li>
             </ol>
           </li>
-          <li>
-            <strong>Conteúdos e Propriedade Intelectual</strong>
+          <li id="conteudos-e-propriedade-intelectual">
+            <strong>
+              <a href="#conteudos-e-propriedade-intelectual">
+                Conteúdos e Propriedade Intelectual
+              </a>
+            </strong>
             <ol>
               <li>
                 Todo o conteúdo disponibilizado pela Fisiquei (vídeos, textos,
@@ -201,8 +219,10 @@ export function Terms(props: TermsProps) {
               </li>
             </ol>
           </li>
-          <li>
-            <strong>Regras de Conduta</strong>
+          <li id="regras-de-conduta">
+            <strong>
+              <a href="#regras-de-conduta">Regras de Conduta</a>
+            </strong>
             <ol>
               <li>
                 É expressamente proibido ao Usuário:
@@ -230,8 +250,10 @@ export function Terms(props: TermsProps) {
               </li>
             </ol>
           </li>
-          <li>
-            <strong>Seguro SiSU</strong>
+          <li id="seguro-sisu">
+            <strong>
+              <a href="#seguro-sisu">Seguro SiSU</a>
+            </strong>
             <ol>
               <li>
                 O Seguro SiSU concede ao Usuário o direito de solicitar
@@ -254,8 +276,10 @@ export function Terms(props: TermsProps) {
               </li>
             </ol>
           </li>
-          <li>
-            <strong>Programa de Indicação</strong>
+          <li id="programa-de-indicacao">
+            <strong>
+              <a href="#programa-de-indicacao">Programa de Indicação</a>
+            </strong>
             <ol>
               <li>
                 A plataforma Fisiquei conta um Programa de Indicação onde cada
@@ -291,8 +315,76 @@ export function Terms(props: TermsProps) {
               </li>
             </ol>
           </li>
-          <li>
-            <strong>Modificações</strong>
+          <li id="mentoria-fisiquei">
+            <strong>
+              <a href="#mentoria-fisiquei">Mentoria Fisiquei</a>
+            </strong>
+            <ol>
+              <li>
+                A Mentoria Fisiquei é um serviço de acompanhamento educacional
+                individualizado conduzido pelo Professor Thales. O serviço é
+                exclusivo para alunos com assinatura ativa na plataforma
+                Fisiquei.
+              </li>
+              <li>
+                A Mentoria compreende até 15 (quinze) sessões individuais
+                anuais, realizadas via Google Meet, com duração de 30 (trinta)
+                minutos cada. Os agendamentos devem ser realizados via WhatsApp
+                diretamente com o professor.
+              </li>
+              <li>
+                O aluno deverá comunicar qualquer cancelamento com antecedência
+                mínima de 24 (vinte e quatro) horas. A ausência sem aviso prévio
+                ou o aviso tardio resultará na contabilização da sessão como
+                realizada.
+              </li>
+              <li>
+                O suporte via WhatsApp destina-se a dúvidas pontuais, ajustes
+                rápidos de cronograma e agendamentos. Este canal não caracteriza
+                atendimento 24 horas, sendo as respostas enviadas conforme
+                disponibilidade do professor. Dúvidas complexas ou aprofundadas
+                deverão ser tratadas exclusivamente durante as sessões
+                agendadas.
+              </li>
+              <li>
+                A Mentoria possui caráter estritamente orientativo e pedagógico.
+                É vedado ao professor a realização de tarefas escolares,
+                trabalhos acadêmicos, provas ou qualquer atividade avaliativa em
+                nome do aluno. O objetivo é o desenvolvimento da autonomia do
+                estudante.
+              </li>
+              <li>
+                A Mentoria Fisiquei fornece ferramentas e estratégias para
+                otimização do estudo, porém, não garante aprovação em exames,
+                vestibulares ou concursos, uma vez que o êxito depende
+                exclusivamente do desempenho, dedicação e constância individual
+                do aluno.
+              </li>
+              <li>
+                Devido à natureza personalizável do serviço e à reserva de
+                agenda, aplicam-se as seguintes regras de reembolso exclusivas
+                para a Mentoria:
+                <ul className="list-disc list-inside pl-3 text-left">
+                  <li>
+                    Até 7 dias após a primeira sessão: Reembolso integral
+                    (100%).
+                  </li>
+                  <li>
+                    Até a terceira sessão realizada: Reembolso de 50% do valor
+                    investido.
+                  </li>
+                  <li>
+                    Após a quarta sessão ou após 2 meses da compra: Não haverá
+                    restituição de valores.
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </li>
+          <li id="modificacoes">
+            <strong>
+              <a href="#modificacoes">Modificações</a>
+            </strong>
             <ol>
               <li>
                 A Fisiquei poderá atualizar estes Termos a qualquer momento.
@@ -302,8 +394,10 @@ export function Terms(props: TermsProps) {
               </li>
             </ol>
           </li>
-          <li>
-            <strong>Legislação e Foro</strong>
+          <li id="legislacao-e-foro">
+            <strong>
+              <a href="#legislacao-e-foro">Legislação e Foro</a>
+            </strong>
             <ol>
               <li>
                 Estes Termos são regidos pelas leis brasileiras. Fica eleito o
@@ -318,8 +412,8 @@ export function Terms(props: TermsProps) {
 
       <div className="bg-neutral mt-14 rounded-lg px-3 py-2 text-[#cdcdcd] w-fit">
         <p>
-          <strong className="font-bold">Última atualização:</strong> 22 de
-          novembro de 2025
+          <strong className="font-bold">Última atualização:</strong> 10 de
+          fevereiro de 2026
         </p>
       </div>
     </div>
