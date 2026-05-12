@@ -46,7 +46,7 @@ export function Terms(props: TermsProps) {
               <li>
                 A Fisiquei oferece a plataforma online que disponibiliza
                 videoaulas, materiais em PDF, gerador de cronograma, questões,
-                listas de exercícios, fórum de dúvidas, simuladores digitais,
+                listas de exercícios, central de dúvidas, simuladores digitais,
                 entre outros recursos, com o objetivo de proporcionar um
                 aprendizado eficiente em Física para o ENEM e vestibulares.
               </li>
@@ -76,8 +76,8 @@ export function Terms(props: TermsProps) {
               </li>
               <li>
                 Alguns dos recursos gratuitos incluem: aulas dos módulos
-                introdutórios, parte das questões do Banco de Questões, leitura
-                do Fórum de Dúvidas e acesso aos simuladores digitais. A
+                introdutórios, geração limitada de listas e simulados, leitura
+                da Central de Dúvidas e acesso aos simuladores digitais. A
                 Fisiquei reserva-se o direito de alterar os recursos gratuitos a
                 qualquer momento e sem necessidade de aviso prévio.
               </li>
@@ -100,6 +100,14 @@ export function Terms(props: TermsProps) {
                 crédito, boleto bancário e Pix como meios de pagamento. A
                 Fisiquei não armazena dados de cartão nem quaisquer informações
                 sensíveis de pagamento.
+              </li>
+              <li>
+                Os planos do Fisiquei possuem vigência com data de expiração
+                fixa (exemplo: acesso até o último dia de janeiro do ano
+                subsequente ao ENEM). Nestes casos, o valor pago é referente à
+                licença de acesso até a data de expiração, independentemente da
+                data de aquisição pelo Usuário, não havendo prorrogação de prazo
+                ou cobrança proporcional ao tempo de uso.
               </li>
             </ol>
           </li>
@@ -210,12 +218,19 @@ export function Terms(props: TermsProps) {
                 comercial sem autorização expressa.
               </li>
               <li>
-                Ao publicar conteúdo na Plataforma (ex.: perguntas no fórum,
-                comentários, anexos), o usuário concede à Fisiquei uma licença
-                não exclusiva, global, irrevogável, gratuita, por prazo
+                Ao publicar conteúdo na Plataforma (ex.: perguntas na central de
+                dúvidas, comentários, anexos), o usuário concede à Fisiquei uma
+                licença não exclusiva, global, irrevogável, gratuita, por prazo
                 indeterminado e sublicenciável para uso, reprodução,
                 distribuição, adaptação e exibição, sempre vinculada ao
                 funcionamento e desenvolvimento da Plataforma.
+              </li>
+              <li>
+                O Usuário autoriza o Fisiquei a utilizar, de forma gratuita, seu
+                primeiro nome e seus resultados de aprovação em exames e
+                vestibulares para fins institucionais e de campanhas
+                publicitárias. Caso o Usuário não deseje a divulgação, deverá
+                manifestar-se expressamente contatando o suporte.
               </li>
             </ol>
           </li>
@@ -225,28 +240,53 @@ export function Terms(props: TermsProps) {
             </strong>
             <ol>
               <li>
-                É expressamente proibido ao Usuário:
-                <ul className="list-disc list-inside pl-3 text-left">
-                  <li>Comprar, vender, transferir ou negociar contas;</li>
+                A licença de acesso ao Fisiquei é de uso estritamente{" "}
+                <strong>pessoal, individual e intransferível</strong>. É
+                expressamente proibido ao Usuário:
+                <ul className="list-disc list-inside pl-3 text-left mt-2">
                   <li>
-                    Compartilhar, distribuir ou redistribuir qualquer material
-                    da Plataforma;
+                    Compartilhar, emprestar, alugar ou ceder os dados de acesso
+                    a terceiros;
                   </li>
                   <li>
-                    Utilizar linguagem ofensiva ou inadequada no fórum e
-                    comentários;
+                    Comprar, vender, transferir ou negociar contas (mesmo na
+                    hipótese de o aluno já ter sido aprovado em exames e não
+                    desejar mais utilizar a plataforma);
                   </li>
                   <li>
-                    Explorar falhas, bugs ou vulnerabilidades para obter
-                    vantagens indevidas;
+                    Compartilhar, distribuir, piratear ou redistribuir qualquer
+                    material da Plataforma (incluindo videoaulas, PDFs de
+                    listas, questões e resoluções);
+                  </li>
+                  <li>
+                    Utilizar robôs, spiders, scrapers, extensões ou qualquer
+                    meio automatizado para extrair dados do site ou realizar o
+                    download não autorizado das videoaulas;
+                  </li>
+                  <li>
+                    Utilizar linguagem ofensiva, preconceituosa, desrespeitosa
+                    ou inadequada na central de dúvidas e nos comentários;
+                  </li>
+                  <li>
+                    Explorar falhas, bugs ou vulnerabilidades do sistema para
+                    obter vantagens indevidas.
                   </li>
                 </ul>
               </li>
-              <li>
-                O descumprimento das regras acima poderá resultar em
-                advertência, suspensão, exclusão de conteúdo, limitação de
-                funcionalidades ou banimento definitivo, conforme avaliação da
-                equipe da Fisiquei.
+              <li className="mt-2">
+                <strong>Monitoramento de Segurança:</strong> O Fisiquei utiliza
+                tecnologias de monitoramento para proteção das contas,
+                registrando endereços de IP, localização geográfica e
+                identificação de dispositivos (<em>device fingerprinting</em>).
+                A detecção de acessos simultâneos indevidos ou indícios de
+                compartilhamento resultará no bloqueio da conta.
+              </li>
+              <li className="mt-2">
+                O descumprimento de qualquer uma das regras acima poderá
+                resultar em advertência, suspensão temporária, exclusão de
+                conteúdo, limitação de funcionalidades ou{" "}
+                <strong>banimento definitivo da conta</strong>, sem direito a
+                reembolso, conforme avaliação e auditoria da equipe do Fisiquei.
               </li>
             </ol>
           </li>
@@ -272,7 +312,9 @@ export function Terms(props: TermsProps) {
                 A solicitação do reembolso do Seguro SiSU deve ser feita dentro
                 do prazo estipulado pela plataforma no momento da divulgação da
                 oferta, e está condicionada à verificação da autenticidade dos
-                documentos apresentados.
+                documentos apresentados. Caso não seja estipulado prazo
+                explicitamente, o prazo para solicitação será de até 30 dias
+                após a divulgação do resultado do SiSU.
               </li>
             </ol>
           </li>
@@ -312,6 +354,12 @@ export function Terms(props: TermsProps) {
                 prévio. Também reserva-se o direito de cancelar qualquer
                 pontuação de um usuário ao identificar mal uso do Programa de
                 Indicação por qualquer motivo.
+              </li>
+              <li>
+                Os pontos gerados no Programa de Indicação não possuem valor
+                monetário fora da Plataforma, não constituem moeda de curso
+                legal e em nenhuma hipótese poderão ser sacados, transferidos
+                para contas bancárias ou trocados por dinheiro em espécie.
               </li>
             </ol>
           </li>
@@ -379,6 +427,13 @@ export function Terms(props: TermsProps) {
                   </li>
                 </ul>
               </li>
+              <li>
+                As sessões de mentoria devem ser agendadas e consumidas dentro
+                do ciclo letivo correspondente ao plano adquirido. Sessões não
+                agendadas ou não utilizadas pelo aluno até a expiração do seu
+                acesso não serão acumuladas para anos seguintes e não gerarão
+                direito a reembolso.
+              </li>
             </ol>
           </li>
           <li id="modificacoes">
@@ -412,8 +467,8 @@ export function Terms(props: TermsProps) {
 
       <div className="bg-neutral mt-14 rounded-lg px-3 py-2 text-[#cdcdcd] w-fit">
         <p>
-          <strong className="font-bold">Última atualização:</strong> 10 de
-          fevereiro de 2026
+          <strong className="font-bold">Última atualização:</strong> 12 de maio
+          de 2026
         </p>
       </div>
     </div>
