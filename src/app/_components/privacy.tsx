@@ -21,20 +21,23 @@ export function Privacy(props: PrivacyProps) {
             <ol>
               <li>
                 A FISIQUEI CURSOS LTDA, inscrita no CNPJ sob o número
-                45.474.789/0001-50, atuando como **Controladora** de dados,
-                descreve por meio deste documento de Política de Privacidade
-                (“Política”), de forma clara e objetiva, como coleta, utiliza,
-                armazena, compartilha e protege os dados pessoais dos usuários,
-                em estrita conformidade com a Lei Geral de Proteção de Dados
-                (LGPD - Lei nº 13.709/2018).
+                45.474.789/0001-50, atuando como <strong>Controladora</strong>{" "}
+                de dados, descreve por meio deste documento de Política de
+                Privacidade (“Política”), de forma clara e objetiva, como
+                coleta, utiliza, armazena, compartilha e protege os dados
+                pessoais dos usuários, em estrita conformidade com a Lei Geral
+                de Proteção de Dados (LGPD - Lei nº 13.709/2018).
               </li>
               <li>
                 Esta Política regula o tratamento de dados na plataforma
                 Fisiquei (“Plataforma”), disponibilizada no endereço
                 https://app.fisiquei.com.br. Ao acessar, se cadastrar ou
                 utilizar a Plataforma, o usuário declara ter lido, compreendido
-                e **concordado integralmente com esta Política de Privacidade**.
-                Caso não concorde com a forma como tratamos seus dados, o
+                e{" "}
+                <strong>
+                  concordado integralmente com esta Política de Privacidade
+                </strong>
+                . Caso não concorde com a forma como tratamos seus dados, o
                 usuário deverá interromper imediatamente o uso da Plataforma.
               </li>
               <li>
@@ -53,9 +56,11 @@ export function Privacy(props: PrivacyProps) {
                 <ul className="list-disc list-inside pl-3 [&>li]:my-0.5! text-left">
                   <li>Nome e e-mail (obrigatórios para o cadastro).</li>
                   <li>
-                    CPF e telefone(opcional no perfil, mas **obrigatórios no
-                    momento da assinatura/compra** para fins de faturamento e
-                    prevenção a fraudes).
+                    CPF e telefone(opcional no perfil, mas{" "}
+                    <strong>
+                      obrigatórios no momento da assinatura/compra
+                    </strong>{" "}
+                    para fins de faturamento e prevenção a fraudes).
                   </li>
                   <li>
                     Endereço, gênero e data de nascimento (fornecidos de forma

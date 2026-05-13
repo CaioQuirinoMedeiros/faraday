@@ -10,14 +10,14 @@ import { TopBanner } from "@/components/home/top-banner"
 export default function Home() {
   return (
     <main className="">
-      <TopBanner
+      {/* <TopBanner
         ctaTitle="Promoção SiSU"
         ctaSubtitle="20% OFF no 4º LOTE!"
         ctaButtonLink="https://app.fisiquei.com.br/api/ofertas/extensivo-2026-padrao/checkout?coupon=PROMOSISU"
         ctaButtonText="Garantir minha vaga"
         endDate={new Date(2026, 1, 13, 23, 59, 59)}
         endText="Último lote até 13/02/2026"
-      />
+      /> */}
 
       <HeroSpotlight />
 

@@ -103,9 +103,9 @@ const faqTirarDuvidas: FaqItem = {
   question: "Como vou poder tirar minhas dúvidas?",
   answer: (
     <>
-      A plataforma Fisiquei possui um Fórum de Dúvidas incrível para você postar
-      qualquer dúvida sobre uma aula ou uma questão! É bem fácil, basta procurar
-      o botão <strong>&quot;Dúvidas&quot;</strong>, postar a sua pergunta e
+      A plataforma Fisiquei possui a Central de Dúvidas, um local para enviar
+      sua dúvida sobre uma aula ou uma questão! É bem fácil, basta procurar o
+      botão <strong>&quot;Dúvidas&quot;</strong>, postar a sua pergunta e
       esperar... O professor Thales não deixa ninguém sem resposta!
     </>
   ),

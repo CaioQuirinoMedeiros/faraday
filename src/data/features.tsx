@@ -68,7 +68,8 @@ export const platformFeatures: PlatformFeature[] = [
     shortText: (
       <>
         Crie listas e simulados entre mais de 5.000 questões bem organizadas e
-        com resolução. Você vai se surpreender com a qualidade do nosso banco de questões. 
+        com resolução. Você vai se surpreender com a qualidade do nosso banco de
+        questões.
       </>
     ),
     topics: [
@@ -79,12 +80,12 @@ export const platformFeatures: PlatformFeature[] = [
     ],
   },
   {
-    title: "Fórum de Dúvidas",
+    title: "Central de Dúvidas",
     badgeText: "Suporte para dúvidas",
     icon: MessageSquareIcon,
     color: "#1f54e9",
     imageSrc: "/images/plataforma-features/forum_duvidas.png",
-    imageAlt: "Página do fórum de dúvidas na plataforma Fisiquei",
+    imageAlt: "Página da Central de Dúvidas na plataforma Fisiquei",
     shortText: (
       <>
         Ficou com alguma dúvida em uma aula ou uma questão? Com um clique você
