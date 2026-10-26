@@ -9,6 +9,8 @@ export type Plan = {
   cashPriceInt: number
   installment: { count: number; valueInt: number }
   features: { checked: boolean | "partial"; description: string }[]
+  startAt?: Date
+  endAt?: Date
   couponData: null | {
     oldPriceInt: number
     couponCode: string

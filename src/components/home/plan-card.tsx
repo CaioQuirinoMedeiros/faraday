@@ -2,7 +2,9 @@ import { Plan } from "@/@types/plans.types"
 import { formatMoneyInCents } from "@/utils/formatters"
 import { cn } from "@/utils/styles"
 import {
+  CalendarClockIcon,
   CheckSquareIcon,
+  ClockIcon,
   FlameIcon,
   MinusSquareIcon,
   ShieldCheckIcon,
@@ -30,6 +32,7 @@ export function PlanCard(props: PlanCardProps) {
     ctaText,
     ctaIcon: CtaIcon,
     installment,
+    startAt,
   } = plan
 
   const url = new URL(
@@ -46,6 +49,8 @@ export function PlanCard(props: PlanCardProps) {
     installment.valueInt
   )
   const cashPriceFormatted = formatMoneyInCents(cashPriceInt)
+
+  const isScheduled = startAt != null && startAt > new Date()
 
   return (
     <div
@@ -117,13 +122,19 @@ export function PlanCard(props: PlanCardProps) {
         <a
           target="_blank"
           href={!free ? checkoutUrl : "https://app.fisiquei.com.br/cadastro"}
+          aria-disabled={isScheduled}
           className={cn(
             "w-full rounded-lg text-base bg-primary py-2 px-3 text-center font-bold min-h-12 flex items-center justify-center gap-2.5 text-primary-foreground hover:scale-105 cursor-pointer hover:brightness-105 transition-all",
-            !!free && "bg-gray-300 text-accent-foreground"
+            !!free && "bg-gray-300 text-accent-foreground",
+            isScheduled &&
+              "cursor-not-allowed opacity-80 pointer-events-none bg-gray-100"
           )}
         >
-          {ctaText}
-          {!!CtaIcon && <CtaIcon className="size-5" />}
+          {!!isScheduled && <CalendarClockIcon className="size-5" />}
+          {!isScheduled
+            ? ctaText
+            : `Em breve (${startAt?.toLocaleDateString()})`}
+          {!isScheduled && !!CtaIcon && <CtaIcon className="size-5" />}
         </a>
       </div>
 
@@ -134,8 +145,8 @@ export function PlanCard(props: PlanCardProps) {
               feature.checked === "partial"
                 ? MinusSquareIcon
                 : feature.checked
-                ? CheckSquareIcon
-                : XSquareIcon
+                  ? CheckSquareIcon
+                  : XSquareIcon
 
             return (
               <div

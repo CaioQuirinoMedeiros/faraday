@@ -31,12 +31,42 @@ const plans: Plan[] = [
     ],
   },
   {
-    key: "plano-atual",
-    name: "Extensivo 2026",
-    description: "Acesso até 31/01/2027",
+    key: "extensivo-2027",
+    name: "Extensivo 2027",
+    description: "Acesso até 31/01/2028",
     cashDiscountInt: 110_00,
-    cashPriceInt: 990_00,
+    cashPriceInt: 440_00,
     free: false,
+    startAt: new Date("2026-11-16T03:00:00Z"),
+    couponData: {
+      couponCode: "BLACKFISIQUEI",
+      endAt: new Date("2026-12-16T23:59:59Z"),
+      formattedCouponValue: "R$ 550,00",
+      oldPriceInt: 1_100_00,
+      startAt: new Date("2026-11-16T00:00:00Z"),
+    },
+    ctaText: "Garantir minha vaga",
+    hotText: "Black Fisiquei",
+    ctaIcon: RocketIcon,
+    internalName: "extensivo-2027",
+    installment: { count: 12, valueInt: 45_83 },
+    features: [
+      { description: "Todas as aulas disponíveis", checked: true },
+      { description: "Acesso total ao Banco de Questões", checked: true },
+      { description: "Acesso total à Central de Dúvidas", checked: true },
+      { description: "Estatísticas de evolução e desempenho", checked: true },
+      { description: "Acesso aos simuladores digitais", checked: true },
+      { description: "Exportação das listas em PDF", checked: true },
+    ],
+  },
+  {
+    key: "plano-atual",
+    name: "Intensivo 2026",
+    description: "Acesso até 15/11/2026",
+    cashDiscountInt: 50_00,
+    cashPriceInt: 297_00,
+    free: false,
+    endAt: new Date("2026-10-31T23:59:59Z"),
     couponData: null,
     // couponData: {
     //   couponCode: "PROMOSISU",
@@ -47,8 +77,8 @@ const plans: Plan[] = [
     // },
     ctaText: "Garantir minha vaga",
     ctaIcon: ArrowRightIcon,
-    internalName: "extensivo-2026-padrao",
-    installment: { count: 12, valueInt: 91_67 },
+    internalName: "intensivo-2026",
+    installment: { count: 6, valueInt: 57_83 },
     features: [
       { description: "Todas as aulas disponíveis", checked: true },
       { description: "Acesso total ao Banco de Questões", checked: true },
@@ -79,15 +109,17 @@ export function PricingSection() {
         </div>
 
         <div className="self-stretch flex flex-col md:flex-row md:justify-center md:items-stretch gap-6">
-          {plans.map((plan) => {
-            return (
-              <PlanCard
-                key={plan.key}
-                plan={plan}
-                className="md:min-w-[340px] lg:min-w-[380px] md:hover:-translate-y-1.5 transition-all duration-300 ease-in-out"
-              />
-            )
-          })}
+          {plans
+            .filter((plan) => plan.endAt == null || plan.endAt > new Date())
+            .map((plan) => {
+              return (
+                <PlanCard
+                  key={plan.key}
+                  plan={plan}
+                  className="md:min-w-[340px] lg:min-w-[380px] md:hover:-translate-y-1.5 transition-all duration-300 ease-in-out"
+                />
+              )
+            })}
         </div>
 
         <div>

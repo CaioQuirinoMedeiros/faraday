@@ -10,14 +10,14 @@ import { TopBanner } from "@/components/home/top-banner"
 export default function Home() {
   return (
     <main className="">
-      {/* <TopBanner
-        ctaTitle="Promoção SiSU"
-        ctaSubtitle="20% OFF no 4º LOTE!"
-        ctaButtonLink="https://app.fisiquei.com.br/api/ofertas/extensivo-2026-padrao/checkout?coupon=PROMOSISU"
-        ctaButtonText="Garantir minha vaga"
-        endDate={new Date(2026, 1, 13, 23, 59, 59)}
-        endText="Último lote até 13/02/2026"
-      /> */}
+      <TopBanner
+        ctaTitle="Revisão para o ENEM"
+        ctaSubtitle="De 09/11 a 13/11... 100% GRATUITO!"
+        ctaButtonLink="https://url.fisiquei.com.br/revisaoenem2026"
+        ctaButtonText="Baixar material"
+        endDate={new Date(2026, 10, 13, 23, 59, 59)}
+        endText=""
+      />
 
       <HeroSpotlight />
 
