@@ -33,7 +33,7 @@ export function PlanCard(props: PlanCardProps) {
   } = plan
 
   const url = new URL(
-    `https://app.fisiquei.com.br/api/ofertas/${internalName}/checkout`
+    `https://app.fisiquei.com.br/ofertas/${internalName}/checkout`
   )
   const searchParams = new URLSearchParams()
   if (couponData) {
@@ -134,8 +134,8 @@ export function PlanCard(props: PlanCardProps) {
               feature.checked === "partial"
                 ? MinusSquareIcon
                 : feature.checked
-                ? CheckSquareIcon
-                : XSquareIcon
+                  ? CheckSquareIcon
+                  : XSquareIcon
 
             return (
               <div
