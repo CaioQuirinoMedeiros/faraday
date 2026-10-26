@@ -112,11 +112,10 @@ export default function RevisaoPage() {
           </h1>
 
           <p className="text-base md:text-lg text-gray-300 mb-8 leading-relaxed text-center max-w-[620px]">
-            Uma semana inteira revisando o que mais cai no ENEM, com o{" "}
-            <strong className="text-primary-light">Prof. Thales Quirino</strong>
-            . São 5 lives no YouTube, de{" "}
-            <strong className="text-primary-light">09 a 13 de novembro</strong>
-            , sempre às 19h45, pra você chegar no 2º dia afiado.
+            Uma semana revisando o que mais cai no ENEM. São 5 lives no YouTube,
+            de{" "}
+            <strong className="text-primary-light">09 a 13 de novembro</strong>,
+            sempre às 19h45, pra você chegar afiado na prova do 2º dia.
           </p>
 
           <div className="flex flex-col sms:flex-row items-stretch sms:items-center gap-4 w-full sms:w-auto">
@@ -242,13 +241,13 @@ export default function RevisaoPage() {
               Quem vai te guiar
             </h2>
             <p className="text-gray-300 leading-relaxed mb-3">
-              Sou o Thales, professor de Física formado pela UnB, com mais de
-              10 anos de sala de aula e mais de 5.000 alunos no Fisiquei.
+              Sou o Thales, professor de Física formado pela UnB, com mais de 10
+              anos de sala de aula e mais de 5.000 alunos no Fisiquei.
             </p>
             <p className="text-gray-300 leading-relaxed">
               Nessa revisão, a ideia é simples: pegar os temas que mais caem,
-              resolver questão por questão com você e mostrar o raciocínio que
-              o ENEM cobra. Te vejo nas lives!
+              resolver questão por questão com você e mostrar o raciocínio que o
+              ENEM cobra. Te vejo nas lives!
             </p>
           </div>
         </div>
