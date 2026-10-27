@@ -33,6 +33,7 @@ export function PlanCard(props: PlanCardProps) {
     ctaIcon: CtaIcon,
     installment,
     startAt,
+    insuranceText,
   } = plan
 
   const url = new URL(
@@ -170,9 +171,9 @@ export function PlanCard(props: PlanCardProps) {
           })}
         </div>
 
-        {!free && (
+        {!!insuranceText && (
           <span className="flex gap-1 justify-center items-center text-sm text-white/50 mt-6 -mb-3">
-            <ShieldCheckIcon className="size-3.5" /> Garantia de 7 dias
+            <ShieldCheckIcon className="size-3.5" /> {insuranceText}
           </span>
         )}
       </div>

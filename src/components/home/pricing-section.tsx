@@ -58,6 +58,7 @@ const plans: Plan[] = [
       { description: "Acesso aos simuladores digitais", checked: true },
       { description: "Exportação das listas em PDF", checked: true },
     ],
+    insuranceText: "Garantia de 7 dias + Seguro SiSU",
   },
   {
     key: "plano-atual",
@@ -87,6 +88,7 @@ const plans: Plan[] = [
       { description: "Acesso aos simuladores digitais", checked: true },
       { description: "Exportação das listas em PDF", checked: true },
     ],
+    insuranceText: "Garantia de 7 dias",
   },
 ]
 

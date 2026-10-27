@@ -1,18 +1,20 @@
 "use client"
 
 import { useIsMounted } from "@/hooks/use-is-mounted"
-import { ArrowRightIcon, TimerIcon } from "lucide-react"
+import { ArrowRightIcon } from "lucide-react"
 import Link from "next/link"
 import { useTimer } from "react-timer-hook"
 
 interface TopBannerProps {
+  startDate: Date
   endDate: Date
-  endText: string
   ctaTitle: string
   ctaSubtitle: string
   ctaButtonText: string
   ctaButtonLink: string
 }
+
+const pad = (value: number) => `${value}`.padStart(2, "0")
 
 export function TopBanner(props: TopBannerProps) {
   const {
@@ -21,72 +23,59 @@ export function TopBanner(props: TopBannerProps) {
     ctaSubtitle,
     ctaTitle,
     endDate,
-    endText,
+    startDate,
   } = props
 
   const { isMounted } = useIsMounted()
 
-  const { days, hours, minutes, seconds, totalMilliseconds } = useTimer({
-    expiryTimestamp: endDate,
-    autoStart: true,
-  })
-
-  const countdownItems = [
-    { label: "d", value: days },
-    { label: "h", value: hours },
-    { label: "m", value: minutes },
-    { label: "s", value: seconds },
-  ]
+  const start = useTimer({ expiryTimestamp: startDate, autoStart: true })
+  const end = useTimer({ expiryTimestamp: endDate, autoStart: true })
 
   if (!isMounted) return null
-  if (totalMilliseconds <= 0) return null
+  if (end.totalMilliseconds <= 0) return null
+
+  const isLive = start.totalMilliseconds <= 0
+  const startTime = `${startDate.getHours()}h${pad(startDate.getMinutes())}`
+
+  const countdown =
+    start.days > 0
+      ? `${start.days}d ${pad(start.hours)}h`
+      : `${pad(start.hours)}h ${pad(start.minutes)}m`
+
+  const shortCountdown =
+    start.days > 1
+      ? `${start.days} dias`
+      : start.days === 1
+        ? "1 dia"
+        : `hoje, ${startTime}`
 
   return (
-    <div className="bg-primary bg-linear-to-r from-[#ffbc57] to-[#ffec81] text-primary-foreground">
-      <div className="relative max-w-[1440px] mx-auto px-6 md:px-6 py-2 flex flex-col sm:flex-row gap-y-4 gap-x-14 sm:items-center sm:justify-between">
-        <div className="flex flex-col md:flex-row gap-x-5 gap-y-2 items-start md:items-center">
-          <div className="flex flex-col">
-            <strong className="tracking-tighter font-bold text-xl">
-              {ctaTitle}
-            </strong>
-            <span className="text-primary-foreground/85 text-sm">
-              {ctaSubtitle}
-            </span>
-          </div>
-
-          <Link
-            href={ctaButtonLink}
-            className="bg-neutral text-white text-sm rounded-md px-2.5 py-1.5 text-center font-bold flex items-center gap-2 border border-neutral hover:opacity-90 transition-all hover:scale-105"
-          >
-            {ctaButtonText}
-            <ArrowRightIcon className="size-4" />
-          </Link>
+    <Link
+      href={ctaButtonLink}
+      className="group block bg-primary text-primary-foreground focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-primary-foreground"
+    >
+      <div className="max-w-[1440px] mx-auto min-h-11 px-5 sm:px-6 py-2.5 flex items-center justify-between sm:justify-center gap-x-7 gap-y-1 text-sm">
+        <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2 min-w-0">
+          <strong className="font-display font-bold text-[15px]">
+            {ctaTitle}
+          </strong>
+          <span className="hidden sm:inline text-primary-foreground/70">
+            {ctaSubtitle}
+          </span>
+          <span className="sm:hidden font-medium text-primary-foreground/70">
+            {isLive ? "Em andamento" : `Começa em ${shortCountdown}`}
+          </span>
         </div>
 
-        <div className="flex flex-col items-start sm:items-end gap-1">
-          <div className="flex items-center gap-3 rounded-lg bg-white/50 px-2.5 py-1.5 border border-neutral/20">
-            <TimerIcon className="size-5" />
-            <div className="flex flex-row gap-3">
-              {countdownItems.map((countdownItem) => {
-                return (
-                  <span
-                    key={countdownItem.label}
-                    className="font-medium whitespace-nowrap text-neutral/90"
-                  >
-                    <span className="inline-block w-[23px] text-center font-bold whitespace-nowrap text-neutral">
-                      {`${countdownItem.value}`.padStart(2, "0")}
-                    </span>
-                    {countdownItem.label}
-                  </span>
-                )
-              })}
-            </div>
-          </div>
-          <p className="hidden sm:block text-xs sm:text-right text-neutral/90">
-            {endText}
-          </p>
-        </div>
+        <span className="hidden sm:inline font-semibold whitespace-nowrap tabular-nums pl-7 border-l border-primary-foreground/20">
+          {isLive ? "Em andamento" : `Começa em ${countdown}`}
+        </span>
+
+        <span className="flex-none inline-flex items-center justify-center gap-1 font-bold whitespace-nowrap size-8 rounded-full bg-primary-foreground text-primary sm:size-auto sm:rounded-none sm:bg-transparent sm:text-primary-foreground sm:underline sm:underline-offset-3 sm:group-hover:decoration-2">
+          <span className="hidden sm:inline">{ctaButtonText}</span>
+          <ArrowRightIcon className="size-4" strokeWidth={2.5} />
+        </span>
       </div>
-    </div>
+    </Link>
   )
 }
