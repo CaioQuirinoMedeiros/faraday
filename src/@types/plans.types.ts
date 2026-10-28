@@ -18,6 +18,7 @@ export type Plan = {
     endAt: Date
     startAt: Date
   }
+  insuranceText?: string
   ctaText: string
   ctaIcon?: React.ElementType
 }

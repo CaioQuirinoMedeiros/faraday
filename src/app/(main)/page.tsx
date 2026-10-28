@@ -11,12 +11,12 @@ export default function Home() {
   return (
     <main className="">
       <TopBanner
-        ctaTitle="Revisão para o ENEM"
-        ctaSubtitle="De 09/11 a 13/11... 100% GRATUITO!"
-        ctaButtonLink="https://url.fisiquei.com.br/revisaoenem2026"
-        ctaButtonText="Baixar material"
+        ctaTitle="Revisão ENEM ao vivo e gratuita"
+        ctaSubtitle="de 09/11 a 13/11"
+        ctaButtonLink="/revisao"
+        ctaButtonText="Participar"
+        startDate={new Date(2026, 10, 9, 19, 45)}
         endDate={new Date(2026, 10, 13, 23, 59, 59)}
-        endText=""
       />
 
       <HeroSpotlight />
