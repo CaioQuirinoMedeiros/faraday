@@ -6,10 +6,63 @@ import { HeroSpotlight } from "@/components/home/hero-spotlight"
 import { DownloadContentSection } from "@/components/home/download-content-section"
 import { PricingSection } from "@/components/home/pricing-section"
 import { TopBanner } from "@/components/home/top-banner"
+import { JsonLd } from "@/components/json-ld"
+import { faqItems } from "@/data/faq"
+import {
+  organizationId,
+  organizationJsonLd,
+  professorId,
+  professorJsonLd,
+  reactNodeToText,
+  siteUrl,
+} from "@/utils/seo"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+}
+
+const homeJsonLd = {
+  "@graph": [
+    organizationJsonLd,
+    professorJsonLd,
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      name: "Fisiquei",
+      url: siteUrl,
+      inLanguage: "pt-BR",
+      publisher: { "@id": organizationId },
+    },
+    {
+      "@type": "Course",
+      name: "Curso de Física para ENEM e Vestibulares",
+      description:
+        "Curso online de Física com videoaulas, banco de mais de 5.000 questões com resolução e Central de Dúvidas, para o ENEM e vestibulares.",
+      url: siteUrl,
+      inLanguage: "pt-BR",
+      provider: { "@id": organizationId },
+      instructor: { "@id": professorId },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((faqItem) => ({
+        "@type": "Question",
+        name: reactNodeToText(faqItem.question),
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: reactNodeToText(faqItem.answer).replace(/\s+/g, " ").trim(),
+        },
+      })),
+    },
+  ],
+}
 
 export default function Home() {
   return (
     <main className="">
+      <JsonLd data={homeJsonLd} />
+
       <TopBanner
         ctaTitle="Revisão ENEM ao vivo e gratuita"
         ctaSubtitle="de 09/11 a 13/11"

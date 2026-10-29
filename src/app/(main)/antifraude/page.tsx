@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   },
   description:
     "Verifique se um número de telefone realmente é do Fisiquei e se proteja de golpes!",
+  alternates: { canonical: "/antifraude/" },
 }
 
 const securityTips = [

@@ -4,6 +4,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Política de Privacidade",
   description: "Confira a Política de Privacidade do Fisiquei",
+  alternates: { canonical: "/privacidade/" },
 }
 
 export default function PoliticaPrivacidadePage() {

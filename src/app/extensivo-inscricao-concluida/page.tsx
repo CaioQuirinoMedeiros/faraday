@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "Parabéns! Seu acesso foi liberado",
   description:
     "Seja muito bem-vindo(a) ao FISIQUEI! Espero que você aproveite ao máximo nosso curso.",
+  robots: { index: false, follow: false },
 }
 
 export default function InscricaoConcluidaPage() {

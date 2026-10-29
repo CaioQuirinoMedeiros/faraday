@@ -14,11 +14,29 @@ import {
   WhatsappGroupButton,
   WhatsappGroupQrCode,
 } from "@/components/whatsapp-group/whatsapp-group"
+import { JsonLd } from "@/components/json-ld"
+import {
+  baseOpenGraph,
+  organizationId,
+  organizationJsonLd,
+  professorId,
+  professorJsonLd,
+  siteUrl,
+} from "@/utils/seo"
 
 export const metadata: Metadata = {
   title: "Revisão ENEM 2026 de Física",
   description:
     "Revisão gratuita de Física para o ENEM 2026 com o Prof. Thales Quirino. 5 lives no YouTube de 09 a 13/11, às 19h45, e 75 questões para treinar.",
+  alternates: { canonical: "/revisao/" },
+  openGraph: {
+    ...baseOpenGraph,
+    url: "/revisao/",
+    images: "/opengraph-image.png",
+    title: "Revisão ENEM 2026 de Física | Fisiquei",
+    description:
+      "5 lives gratuitas no YouTube com o Prof. Thales Quirino, de 09 a 13/11, às 19h45, e 75 questões para treinar.",
+  },
 }
 
 const whatsappGroupUrl = "https://chat.whatsapp.com/DDKUU8B2wim8YvP6qmOn17"
@@ -57,6 +75,37 @@ const lives = [
   },
 ]
 
+const revisaoJsonLd = {
+  "@graph": [
+    organizationJsonLd,
+    professorJsonLd,
+    ...lives.map((live) => {
+      const [day, month] = live.date.split("/")
+      return {
+        "@type": "Event",
+        name: `Revisão ENEM 2026 de Física: ${live.topic}`,
+        description: `Live gratuita de revisão de ${live.topic} para o ENEM 2026 com o Prof. Thales Quirino.`,
+        startDate: `2026-${month}-${day}T19:45:00-03:00`,
+        endDate: `2026-${month}-${day}T21:45:00-03:00`,
+        eventStatus: "https://schema.org/EventScheduled",
+        eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+        location: { "@type": "VirtualLocation", url: live.url },
+        isAccessibleForFree: true,
+        offers: {
+          "@type": "Offer",
+          price: 0,
+          priceCurrency: "BRL",
+          availability: "https://schema.org/InStock",
+          url: `${siteUrl}/revisao/`,
+        },
+        organizer: { "@id": organizationId },
+        performer: { "@id": professorId },
+        image: `${siteUrl}/opengraph-image.png`,
+      }
+    }),
+  ],
+}
+
 const materialItems = [
   "75 questões no estilo ENEM, 15 para cada live",
   "10 questões de cada dia corrigidas ao vivo",
@@ -85,6 +134,8 @@ function MaterialButton({ className }: { className?: string }) {
 export default function RevisaoPage() {
   return (
     <main>
+      <JsonLd data={revisaoJsonLd} />
+
       <section className="relative bg-background overflow-hidden">
         <Spotlight />
 
