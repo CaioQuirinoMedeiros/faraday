@@ -43,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt" className="overflow-y-auto">
+    <html lang="pt">
       <head>
         {GTM_ID && (
           <Script

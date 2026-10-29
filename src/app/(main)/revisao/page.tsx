@@ -10,6 +10,10 @@ import {
 } from "lucide-react"
 import { WhatsappLogoIcon, YoutubeLogoIcon } from "@/assets/icons"
 import { Spotlight } from "@/components/home/spotlight"
+import {
+  WhatsappGroupButton,
+  WhatsappGroupQrCode,
+} from "@/components/whatsapp-group/whatsapp-group"
 
 export const metadata: Metadata = {
   title: "Revisão ENEM 2026 de Física",
@@ -65,19 +69,6 @@ const groupItems = [
   "Desconto exclusivo para quem está no grupo",
 ]
 
-function WhatsappButton({ className }: { className?: string }) {
-  return (
-    <a
-      href={whatsappGroupUrl}
-      target="_blank"
-      className={`flex items-center justify-center gap-2.5 px-5 md:px-6 py-3 bg-[#25D366] font-bold rounded-lg text-[#06210f] text-base hover:scale-105 transition-all hover:bg-[#3be07a] text-center ${className ?? ""}`}
-    >
-      <WhatsappLogoIcon className="size-5 fill-[#06210f]" />
-      Entrar no grupo
-    </a>
-  )
-}
-
 function MaterialButton({ className }: { className?: string }) {
   return (
     <a
@@ -119,7 +110,7 @@ export default function RevisaoPage() {
           </p>
 
           <div className="flex flex-col sms:flex-row items-stretch sms:items-center gap-4 w-full sms:w-auto">
-            <WhatsappButton />
+            <WhatsappGroupButton url={whatsappGroupUrl} />
             <MaterialButton />
           </div>
 
@@ -212,17 +203,27 @@ export default function RevisaoPage() {
             <h2 className="text-2xl md:text-3xl font-bold font-display mb-4">
               Grupo da revisão
             </h2>
-            <ul className="flex flex-col gap-3 mb-8">
-              {groupItems.map((item) => {
-                return (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <CheckIcon className="size-5 shrink-0 text-[#25D366]" />
-                    <span>{item}</span>
-                  </li>
-                )
-              })}
-            </ul>
-            <WhatsappButton className="mt-auto" />
+            <div className="flex items-start gap-6 mb-8">
+              <ul className="flex flex-col gap-3 flex-1">
+                {groupItems.map((item) => {
+                  return (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <CheckIcon className="size-5 shrink-0 text-[#25D366]" />
+                      <span>{item}</span>
+                    </li>
+                  )
+                })}
+              </ul>
+              <div className="hidden lg:pointer-fine:flex flex-col items-center gap-2">
+                <WhatsappGroupQrCode
+                  url={whatsappGroupUrl}
+                  size={112}
+                  className="p-2"
+                />
+                <span className="text-xs text-muted">Escaneie no celular</span>
+              </div>
+            </div>
+            <WhatsappGroupButton url={whatsappGroupUrl} className="mt-auto" />
           </div>
         </div>
       </section>
@@ -268,7 +269,7 @@ export default function RevisaoPage() {
               grupo fica sabendo primeiro.
             </p>
           </div>
-          <WhatsappButton className="shrink-0" />
+          <WhatsappGroupButton url={whatsappGroupUrl} className="shrink-0" />
         </div>
       </section>
     </main>
