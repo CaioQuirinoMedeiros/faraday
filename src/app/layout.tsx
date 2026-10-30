@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter, Poppins } from "next/font/google"
 import "../globals.css"
 import Script from "next/script"
+import { baseOpenGraph, siteDescription, siteUrl } from "@/utils/seo"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,24 +15,17 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
 })
 
-const appUrl = "https://fisiquei.com.br"
-
 export const metadata: Metadata = {
-  metadataBase: new URL(appUrl),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Fisiquei - Aprenda Física de verdade!",
     template: "%s | Fisiquei",
   },
-  description:
-    "Prepare-se para o ENEM e vestibulares com a melhor plataforma de ensino de Física online! O Fisiquei vai mudar a forma como você enxerga a Física!",
+  description: siteDescription,
   openGraph: {
+    ...baseOpenGraph,
     title: "Fisiquei - Aprenda Física de verdade!",
-    description:
-      "Prepare-se para o ENEM e vestibulares com a melhor plataforma de ensino de Física online! O Fisiquei vai mudar a forma como você enxerga a Física!",
-    type: "website",
-    locale: "pt_BR",
-    url: appUrl,
-    siteName: "Fisiquei",
+    description: siteDescription,
   },
 }
 
@@ -43,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt" className="overflow-y-auto">
+    <html lang="pt-BR">
       <head>
         {GTM_ID && (
           <Script

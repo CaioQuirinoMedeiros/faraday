@@ -4,6 +4,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Termos de Uso",
   description: "Confira os Termos de Uso do Fisiquei",
+  alternates: { canonical: "/termos/" },
 }
 
 export default function TermosPage() {
