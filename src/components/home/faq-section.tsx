@@ -23,7 +23,11 @@ const item: Variants = {
   },
 }
 
-export function FaqSection() {
+interface FaqSectionProps {
+  items?: typeof faqItems
+}
+
+export function FaqSection({ items = faqItems }: FaqSectionProps) {
   return (
     <section
       id="faq"
@@ -50,7 +54,7 @@ export function FaqSection() {
           viewport={{ once: true }}
           className="w-full flex flex-col mb-4"
         >
-          {faqItems.map((faqItem) => {
+          {items.map((faqItem) => {
             return (
               <AccordionItem
                 key={faqItem.key}
@@ -65,7 +69,7 @@ export function FaqSection() {
                   <ChevronDownIcon className="size-5 group-data-[state=open]:rotate-180 transition-all text-muted group-data-[state=open]:text-white group-hover:text-white shrink-0" />
                 </Accordion.Trigger>
                 <Accordion.Content className="overflow-hidden px-1 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  <p className="pb-4 text-foreground/75 text-sm sm:text-base">
+                  <p className="pb-4 text-white/75 text-sm sm:text-base">
                     {faqItem.answer}
                   </p>
                 </Accordion.Content>

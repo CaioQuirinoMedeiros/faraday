@@ -19,6 +19,18 @@ export default function Home() {
         endDate={new Date(2026, 10, 13, 23, 59, 59)}
       />
 
+      <TopBanner
+        ctaTitle="Black Fisiquei: 50% OFF no Extensivo 2027"
+        ctaSubtitle="de 16/11 a 16/12, com Seguro SiSU"
+        ctaButtonLink="/black"
+        ctaButtonText="Ver oferta"
+        startDate={new Date("2026-11-16T00:00:00-03:00")}
+        endDate={new Date("2026-12-16T23:59:59-03:00")}
+        visibleFrom={new Date("2026-11-14T00:00:00-03:00")}
+        liveText="Até 16/12"
+        className="bg-fire text-fire-foreground"
+      />
+
       <HeroSpotlight />
 
       <PlatformSection />
