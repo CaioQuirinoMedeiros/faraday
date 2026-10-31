@@ -1,8 +1,8 @@
 import { Metadata } from "next"
 import {
   BarChart3Icon,
-  CalendarDaysIcon,
   FileDownIcon,
+  GamepadIcon,
   GraduationCapIcon,
   ListChecksIcon,
   MessageCircleQuestionIcon,
@@ -10,15 +10,14 @@ import {
   ShieldCheckIcon,
   TimerIcon,
 } from "lucide-react"
-import { WhatsappLogoIcon } from "@/assets/icons"
 import { FaqSection } from "@/components/home/faq-section"
 import { TestimonialsSection } from "@/components/home/testimonials-section"
 import { BlackCheckoutButton } from "@/components/black/black-checkout-button"
 import { BlackCountdown } from "@/components/black/black-countdown"
 import {
+  blackCheckoutUrl,
   blackOffers,
   blackOriginalPriceInt,
-  blackWhatsappGroupUrl,
 } from "@/data/black"
 import { faqBlackItems } from "@/data/faq"
 import { formatMoneyInCents } from "@/utils/formatters"
@@ -35,25 +34,9 @@ const features = [
   { icon: ListChecksIcon, text: "Banco com mais de 5.000 questões" },
   { icon: MessageCircleQuestionIcon, text: "Central de Dúvidas comigo" },
   { icon: BarChart3Icon, text: "Estatísticas de evolução e desempenho" },
-  { icon: TimerIcon, text: "Simuladores digitais" },
+  { icon: GamepadIcon, text: "Simuladores digitais" },
   { icon: FileDownIcon, text: "Listas personalizadas em PDF" },
 ]
-
-function WhatsappButton({ className }: { className?: string }) {
-  return (
-    <a
-      href={blackWhatsappGroupUrl}
-      target="_blank"
-      className={cn(
-        "flex items-center justify-center gap-2.5 px-5 md:px-6 py-3 min-h-12 bg-[#25D366] font-bold rounded-lg text-[#06210f] text-base hover:scale-105 transition-all hover:bg-[#3be07a] text-center",
-        className
-      )}
-    >
-      <WhatsappLogoIcon className="size-5 fill-[#06210f]" />
-      Entrar no grupo
-    </a>
-  )
-}
 
 function Coupon({ code }: { code: string }) {
   return (
@@ -126,17 +109,11 @@ export default function BlackPage() {
 
         <div className="relative max-w-6xl mx-auto px-6 pt-14 pb-0 md:py-20 grid md:grid-cols-[1fr_400px] lg:grid-cols-[1fr_460px] gap-x-8 items-center z-2">
           <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-3">
-              <img
-                src="/images/black/logo-black-fisiquei.png"
-                alt="Black Fisiquei"
-                className="size-16 object-contain"
-              />
-              <span className="flex items-center gap-1.5 text-sm font-bold uppercase tracking-[0.14em] text-white">
-                <CalendarDaysIcon className="size-4 text-fire" />
-                16/11 a 16/12
-              </span>
-            </div>
+            <img
+              src="/images/black/logo-black-fisiquei.png"
+              alt="Black Fisiquei"
+              className="size-16 object-contain"
+            />
 
             <h1 className="font-display font-black italic uppercase leading-[0.86] tracking-tight text-6xl sm:text-7xl lg:text-8xl text-white">
               Black
@@ -168,12 +145,12 @@ export default function BlackPage() {
 
             <BlackCountdown />
 
-            <div className="flex flex-col sms:flex-row gap-3 sms:items-center">
+            <div className="">
               <BlackCheckoutButton
                 coupon={publicOffer.coupon}
                 label="Garantir com 50% OFF"
+                className="w-full max-w-100"
               />
-              <WhatsappButton />
             </div>
 
             <p className="flex items-center gap-1.5 text-sm text-white/60">
@@ -237,31 +214,33 @@ export default function BlackPage() {
                   Já sou aluno ou ex-aluno
                 </span>
                 <h3 className="font-display font-bold text-2xl text-white mt-1">
-                  {renewal.percentOff}% OFF para quem já estudou comigo
+                  {renewal.percentOff}% OFF para renovação
                 </h3>
               </div>
               <Price
                 installmentInt={renewal.installmentInt}
                 cashPriceInt={renewal.cashPriceInt}
               />
-              <Coupon code={renewal.coupon} />
+              <div className="flex flex-col gap-2">
+                <Coupon code={renewal.coupon} />
+                <p className="text-xs text-white/50">
+                  Use o mesmo email do seu acesso atual para o cupom ser
+                  validado.
+                </p>
+              </div>
               <div className="mt-auto flex flex-col gap-3">
                 <BlackCheckoutButton
                   coupon={renewal.coupon}
                   label="Renovar com 60% OFF"
                   variant="outline"
                 />
-                <p className="text-xs text-white/50 text-center">
-                  Use o mesmo email do seu acesso atual para o cupom ser
-                  validado.
-                </p>
               </div>
             </div>
           </div>
 
           <div className="mt-12 rounded-2xl border border-white/10 bg-[#0d0d0d] p-7 md:p-8">
-            <h3 className="font-display font-bold text-xl text-white mb-5">
-              O que vem no Extensivo 2027
+            <h3 className="font-display font-semibold text-xl text-white mb-5">
+              O Extensivo 2027 dá acesso completo ao Fisiquei:
             </h3>
             <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {features.map((feature) => {
@@ -296,17 +275,17 @@ export default function BlackPage() {
               </div>
             </div>
             <div>
-              <span className="text-sm font-bold uppercase tracking-[0.14em] opacity-70">
+              <span className="text-sm font-bold uppercase tracking-wider opacity-70">
                 &quot;E se eu comprar e passar no SiSU?&quot;
               </span>
-              <h2 className="text-3xl md:text-5xl font-bold font-display mt-2 mb-4 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-bold font-display mt-2 mb-4 leading-tight tracking-tighter">
                 Você recebe 100% do valor de volta.
               </h2>
               <p className="text-lg font-medium max-w-2xl">
                 Comprou na Black Fisiquei e foi aprovado no SiSU até{" "}
                 <strong>28/02/2027</strong>? Eu devolvo o valor integral. Não
-                importa a chamada, vale a data. É só mandar o comprovante para o
-                nosso suporte.
+                importa em qual chamada, o que vale é a data. É só mandar o
+                comprovante para o nosso suporte.
               </p>
             </div>
           </div>
@@ -340,26 +319,26 @@ export default function BlackPage() {
 
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
-          <div className="shrink-0 relative size-60 rounded-3xl overflow-hidden bg-radial from-fire/40 to-[#141414] to-70%">
+          <div className="shrink-0 relative size-64 rounded-3xl overflow-hidden bg-radial from-fire/40 to-[#141414] to-70%">
             <img
               src="/images/black/thales-anunciando.webp"
               alt="Prof. Thales Quirino"
               className="absolute left-1/2 -translate-x-1/2 top-4 w-[88%]"
             />
           </div>
-          <div>
-            <h2 className="text-3xl font-bold font-display text-white mb-4">
+          <div className="flex flex-col gap-3">
+            <h2 className="text-3xl font-bold font-display text-white mb-1">
               Por que agora?
             </h2>
-            <p className="text-gray-300 leading-relaxed mb-3">
-              Sou o Thales, professor de Física formado pela UnB, com mais de 10
-              anos de sala de aula e mais de 5.000 alunos no Fisiquei.
+            <p className="text-gray-300 leading-relaxed">
+              A Black é o único momento do ano em que o Extensivo sai por esse
+              preço. E com o Seguro SiSU, você não tem risco nenhum em adquirir
+              agora.
             </p>
             <p className="text-gray-300 leading-relaxed">
-              A Black é o único momento do ano em que o Extensivo sai pela
-              metade do preço. E com o Seguro SiSU você não precisa esperar o
-              resultado para decidir: garante agora e, se passar, o dinheiro
-              volta. Bora fazer de 2027 o seu ano?
+              Quem começa a estudar antes tem muito mais tempo para ver todo o
+              conteúdo com calma e ainda revisar antes da prova. Então aproveita
+              essa oportunidade pra fazer 2027 o ano da sua evolução na Física!
             </p>
             <p className="text-white font-semibold mt-4">
               Prof. Thales Quirino
@@ -390,9 +369,8 @@ export default function BlackPage() {
               coupon={publicOffer.coupon}
               label="Garantir com 50% OFF"
             />
-            <WhatsappButton />
             <a
-              href="#oferta"
+              href={blackCheckoutUrl(renewal.coupon)}
               className="flex items-center justify-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors"
             >
               <GraduationCapIcon className="size-4" />

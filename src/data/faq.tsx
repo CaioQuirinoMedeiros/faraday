@@ -185,19 +185,6 @@ const faqBlackAcesso: FaqItem = {
   ),
 }
 
-const faqBlackCupom: FaqItem = {
-  key: "black-cupom",
-  question: "Como uso o cupom?",
-  answer: (
-    <>
-      Os botões desta página já levam para o checkout com o cupom aplicado. Se
-      você entrar pela plataforma, é só digitar <strong>BLACKFISIQUEI</strong>{" "}
-      (ou <strong>RENOVABF60</strong>, se já foi aluno) no campo de cupom antes
-      de finalizar o pagamento.
-    </>
-  ),
-}
-
 const faqBlackAlunoAtivo: FaqItem = {
   key: "black-aluno-ativo",
   question: "Já tenho acesso até 31/01/2027. Vale a pena renovar agora?",
@@ -229,9 +216,8 @@ const faqBlackVestibulares: FaqItem = {
   question: "Serve para outros vestibulares além do ENEM?",
   answer: (
     <>
-      Sim. O curso cobre toda a Física do ensino médio, do básico ao avançado, e
-      o banco de questões tem provas de vários vestibulares, como Fuvest,
-      Unicamp, UnB e medicina. Dá para filtrar por prova e dificuldade.
+      Sim! O curso cobre toda a Física do ensino médio, do básico ao avançado, e
+      o banco de questões tem provas de diversos vestibulares.
     </>
   ),
 }
@@ -243,7 +229,6 @@ export const faqBlackItems = [
   faqBlackNaoSeiSeVouEstudar,
   faqRenovacao,
   faqBlackAlunoAtivo,
-  faqBlackCupom,
   faqBlackAcesso,
   faqFormasPagamento,
   faqReembolso,

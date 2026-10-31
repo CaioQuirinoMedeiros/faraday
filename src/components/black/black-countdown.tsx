@@ -29,7 +29,7 @@ export function BlackCountdown({ className }: { className?: string }) {
               key={unit.label}
               className="min-w-16 rounded-lg border border-fire/30 bg-fire/10 px-2 py-2 flex flex-col items-center"
             >
-              <span className="font-display font-bold text-2xl tabular-nums leading-none text-white">
+              <span className="font-mono font-bold text-2xl leading-none text-white">
                 {phase === "loading" ? "--" : pad(unit.value)}
               </span>
               <span className="text-[11px] font-medium text-white/60 mt-1">
