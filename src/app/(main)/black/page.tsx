@@ -14,19 +14,112 @@ import { FaqSection } from "@/components/home/faq-section"
 import { TestimonialsSection } from "@/components/home/testimonials-section"
 import { BlackCheckoutButton } from "@/components/black/black-checkout-button"
 import { BlackCountdown } from "@/components/black/black-countdown"
+import { JsonLd } from "@/components/json-ld"
 import {
   blackCheckoutUrl,
+  blackEndAt,
   blackOffers,
   blackOriginalPriceInt,
+  blackStartAt,
 } from "@/data/black"
 import { faqBlackItems } from "@/data/faq"
 import { formatMoneyInCents } from "@/utils/formatters"
+import {
+  baseOpenGraph,
+  faqPageJsonLd,
+  organizationId,
+  organizationJsonLd,
+  professorId,
+  professorJsonLd,
+  siteUrl,
+} from "@/utils/seo"
 import { cn } from "@/utils/styles"
 
 export const metadata: Metadata = {
   title: "Black Fisiquei: 50% OFF no Extensivo 2027",
   description:
     "De 16/11 a 16/12, o Extensivo 2027 de Física do Prof. Thales Quirino sai com 50% OFF: 12x de R$ 45,83 ou R$ 440 à vista. Com Seguro SiSU: aprovou até 28/02/2027, recebe 100% de volta.",
+  alternates: { canonical: "/black/" },
+  openGraph: {
+    ...baseOpenGraph,
+    url: "/black/",
+    images: "/opengraph-image.png",
+    title: "Black Fisiquei: 50% OFF no Extensivo 2027 | Fisiquei",
+    description:
+      "Extensivo 2027 de Física com 50% OFF até 16/12, com Seguro SiSU: aprovou até 28/02/2027, recebe 100% de volta.",
+  },
+}
+
+const blackOfferJsonLd = (
+  offer: (typeof blackOffers)["public"],
+  name: string
+) => ({
+  "@type": "Offer",
+  name,
+  category: "Paid",
+  price: offer.cashPriceInt / 100,
+  priceCurrency: "BRL",
+  availability: "https://schema.org/InStock",
+  validFrom: blackStartAt.toISOString(),
+  validThrough: blackEndAt.toISOString(),
+  url: blackCheckoutUrl(offer.coupon),
+})
+
+const blackJsonLd = {
+  "@graph": [
+    organizationJsonLd,
+    professorJsonLd,
+    {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/black/#webpage`,
+      name: "Black Fisiquei: 50% OFF no Extensivo 2027",
+      url: `${siteUrl}/black/`,
+      inLanguage: "pt-BR",
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Fisiquei",
+            item: `${siteUrl}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Black Fisiquei",
+            item: `${siteUrl}/black/`,
+          },
+        ],
+      },
+    },
+    {
+      "@type": "Course",
+      name: "Extensivo 2027 de Física",
+      description:
+        "Curso online de Física para o ENEM e vestibulares, do básico ao avançado, com banco de mais de 5.000 questões, Central de Dúvidas com o Prof. Thales Quirino, simuladores e listas em PDF.",
+      url: `${siteUrl}/black/`,
+      inLanguage: "pt-BR",
+      provider: { "@id": organizationId },
+      instructor: { "@id": professorId },
+      image: `${siteUrl}/images/black/thales-apontando-para-voce.webp`,
+      hasCourseInstance: {
+        "@type": "CourseInstance",
+        courseMode: "Online",
+        endDate: "2028-01-31",
+        instructor: { "@id": professorId },
+      },
+      offers: [
+        blackOfferJsonLd(blackOffers.public, "Black Fisiquei: 50% OFF"),
+        blackOfferJsonLd(
+          blackOffers.renewal,
+          "Black Fisiquei: 60% OFF para renovação"
+        ),
+      ],
+    },
+    faqPageJsonLd(faqBlackItems),
+  ],
 }
 
 const features = [
@@ -103,6 +196,8 @@ export default function BlackPage() {
 
   return (
     <main className="bg-[#050505]">
+      <JsonLd data={blackJsonLd} />
+
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(252_126_32/0.07)_1px,transparent_1px),linear-gradient(90deg,rgb(252_126_32/0.07)_1px,transparent_1px)] bg-size-[50px_50px]" />
         <div className="pointer-events-none absolute -right-40 top-10 size-[720px] rounded-full bg-radial from-fire/25 to-transparent to-70%" />

@@ -9,11 +9,11 @@ import { TopBanner } from "@/components/home/top-banner"
 import { JsonLd } from "@/components/json-ld"
 import { faqItems } from "@/data/faq"
 import {
+  faqPageJsonLd,
   organizationId,
   organizationJsonLd,
   professorId,
   professorJsonLd,
-  reactNodeToText,
   siteUrl,
 } from "@/utils/seo"
 import type { Metadata } from "next"
@@ -44,17 +44,7 @@ const homeJsonLd = {
       provider: { "@id": organizationId },
       instructor: { "@id": professorId },
     },
-    {
-      "@type": "FAQPage",
-      mainEntity: faqItems.map((faqItem) => ({
-        "@type": "Question",
-        name: reactNodeToText(faqItem.question),
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: reactNodeToText(faqItem.answer).replace(/\s+/g, " ").trim(),
-        },
-      })),
-    },
+    faqPageJsonLd(faqItems),
   ],
 }
 

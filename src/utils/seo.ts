@@ -1,3 +1,4 @@
+import { instagramUrl, threadsUrl, xUrl, youtubeUrl } from "@/data/socials"
 import type { Metadata } from "next"
 import { isValidElement, type ReactNode } from "react"
 
@@ -22,11 +23,7 @@ export const organizationJsonLd = {
   url: siteUrl,
   logo: `${siteUrl}/images/logo_fisiquei_365x100.png`,
   description: siteDescription,
-  sameAs: [
-    "https://youtube.com/@fisiquei",
-    "https://x.com/fisiquei",
-    "https://instagram.com/thalesquirino",
-  ],
+  sameAs: [youtubeUrl, xUrl, instagramUrl],
 }
 
 export const professorJsonLd = {
@@ -35,10 +32,7 @@ export const professorJsonLd = {
   name: "Thales Quirino",
   jobTitle: "Professor de Física",
   worksFor: { "@id": organizationId },
-  sameAs: [
-    "https://instagram.com/thalesquirino",
-    "https://www.threads.com/@thalesquirino",
-  ],
+  sameAs: [instagramUrl, threadsUrl],
 }
 
 export function reactNodeToText(node: ReactNode): string {
@@ -55,4 +49,20 @@ export function reactNodeToText(node: ReactNode): string {
     return reactNodeToText(node.props.children)
   }
   return ""
+}
+
+export function faqPageJsonLd(
+  items: { question: ReactNode; answer: ReactNode }[]
+) {
+  return {
+    "@type": "FAQPage",
+    mainEntity: items.map((faqItem) => ({
+      "@type": "Question",
+      name: reactNodeToText(faqItem.question),
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: reactNodeToText(faqItem.answer).replace(/\s+/g, " ").trim(),
+      },
+    })),
+  }
 }
