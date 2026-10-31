@@ -9,14 +9,15 @@ import { TopBanner } from "@/components/home/top-banner"
 import { JsonLd } from "@/components/json-ld"
 import { faqItems } from "@/data/faq"
 import {
+  faqPageJsonLd,
   organizationId,
   organizationJsonLd,
   professorId,
   professorJsonLd,
-  reactNodeToText,
   siteUrl,
 } from "@/utils/seo"
 import type { Metadata } from "next"
+import { blackEndAt, blackStartAt } from "@/data/black"
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -44,19 +45,12 @@ const homeJsonLd = {
       provider: { "@id": organizationId },
       instructor: { "@id": professorId },
     },
-    {
-      "@type": "FAQPage",
-      mainEntity: faqItems.map((faqItem) => ({
-        "@type": "Question",
-        name: reactNodeToText(faqItem.question),
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: reactNodeToText(faqItem.answer).replace(/\s+/g, " ").trim(),
-        },
-      })),
-    },
+    faqPageJsonLd(faqItems),
   ],
 }
+
+const revisaoStartAt = new Date("2026-11-09T19:45:00-03:00")
+const revisaoEndAt = new Date("2026-11-13T23:59:59-03:00")
 
 export default function Home() {
   return (
@@ -68,8 +62,20 @@ export default function Home() {
         ctaSubtitle="de 09/11 a 13/11"
         ctaButtonLink="/revisao"
         ctaButtonText="Participar"
-        startDate={new Date(2026, 10, 9, 19, 45)}
-        endDate={new Date(2026, 10, 13, 23, 59, 59)}
+        startDate={revisaoStartAt}
+        endDate={revisaoEndAt}
+      />
+
+      <TopBanner
+        ctaTitle="Black Fisiquei: 50% OFF no Extensivo 2027"
+        ctaSubtitle="de 16/11 a 16/12, com Seguro SiSU"
+        ctaButtonLink="/black"
+        ctaButtonText="Ver oferta"
+        startDate={blackStartAt}
+        endDate={blackEndAt}
+        visibleFrom={revisaoEndAt}
+        liveText="Até 16/12"
+        className="bg-fire text-fire-foreground"
       />
 
       <HeroSpotlight />

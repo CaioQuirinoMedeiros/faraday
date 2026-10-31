@@ -4,6 +4,7 @@ import { useIsMounted } from "@/hooks/use-is-mounted"
 import { ArrowRightIcon } from "lucide-react"
 import Link from "next/link"
 import { useTimer } from "react-timer-hook"
+import { cn } from "@/utils/styles"
 
 interface TopBannerProps {
   startDate: Date
@@ -12,6 +13,9 @@ interface TopBannerProps {
   ctaSubtitle: string
   ctaButtonText: string
   ctaButtonLink: string
+  visibleFrom?: Date
+  liveText?: string
+  className?: string
 }
 
 const pad = (value: number) => `${value}`.padStart(2, "0")
@@ -24,6 +28,9 @@ export function TopBanner(props: TopBannerProps) {
     ctaTitle,
     endDate,
     startDate,
+    visibleFrom,
+    liveText = "Em andamento",
+    className,
   } = props
 
   const { isMounted } = useIsMounted()
@@ -33,6 +40,7 @@ export function TopBanner(props: TopBannerProps) {
 
   if (!isMounted) return null
   if (end.totalMilliseconds <= 0) return null
+  if (visibleFrom && visibleFrom > new Date()) return null
 
   const isLive = start.totalMilliseconds <= 0
   const startTime = `${startDate.getHours()}h${pad(startDate.getMinutes())}`
@@ -52,7 +60,10 @@ export function TopBanner(props: TopBannerProps) {
   return (
     <Link
       href={ctaButtonLink}
-      className="group block bg-primary text-primary-foreground focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-primary-foreground"
+      className={cn(
+        "group block bg-primary text-primary-foreground focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-primary-foreground",
+        className
+      )}
     >
       <div className="max-w-[1440px] mx-auto min-h-11 px-5 sm:px-6 py-2.5 flex items-center justify-between sm:justify-center gap-x-7 gap-y-1 text-sm">
         <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2 min-w-0">
@@ -63,12 +74,12 @@ export function TopBanner(props: TopBannerProps) {
             {ctaSubtitle}
           </span>
           <span className="sm:hidden font-medium text-primary-foreground/70">
-            {isLive ? "Em andamento" : `Começa em ${shortCountdown}`}
+            {isLive ? liveText : `Começa em ${shortCountdown}`}
           </span>
         </div>
 
         <span className="hidden sm:inline font-semibold whitespace-nowrap tabular-nums pl-7 border-l border-primary-foreground/20">
-          {isLive ? "Em andamento" : `Começa em ${countdown}`}
+          {isLive ? liveText : `Começa em ${countdown}`}
         </span>
 
         <span className="flex-none inline-flex items-center justify-center gap-1 font-bold whitespace-nowrap size-8 rounded-full bg-primary-foreground text-primary sm:size-auto sm:rounded-none sm:bg-transparent sm:text-primary-foreground sm:underline sm:underline-offset-3 sm:group-hover:decoration-2">

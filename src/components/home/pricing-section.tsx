@@ -37,13 +37,13 @@ const plans: Plan[] = [
     cashDiscountInt: 110_00,
     cashPriceInt: 440_00,
     free: false,
-    startAt: new Date("2026-11-16T03:00:00Z"),
+    startAt: new Date("2026-11-16T00:00:00-03:00"),
     couponData: {
       couponCode: "BLACKFISIQUEI",
-      endAt: new Date("2026-12-16T23:59:59Z"),
+      endAt: new Date("2026-12-16T23:59:59-03:00"),
       formattedCouponValue: "R$ 550,00",
       oldPriceInt: 1_100_00,
-      startAt: new Date("2026-11-16T00:00:00Z"),
+      startAt: new Date("2026-11-16T00:00:00-03:00"),
     },
     ctaText: "Garantir minha vaga",
     hotText: "Black Fisiquei",
@@ -149,7 +149,7 @@ export function PricingSection() {
               </div>
             </div>
 
-            {/* <div className="relative p-4 sm:p-6 rounded-2xl border border-primary bg-primary-lighter text-neutral flex gap-4 sm:gap-6 items-start max-w-[740px]">
+            <div className="relative p-4 sm:p-6 rounded-2xl border border-primary bg-primary-lighter text-neutral flex gap-4 sm:gap-6 sm:items-start max-w-[740px]">
               <img
                 src="/images/selos/selo-garantia-sisu.png"
                 className="size-[60px] sm:size-[92px] object-contain"
@@ -161,15 +161,17 @@ export function PricingSection() {
                   Seguro SiSU
                 </strong>
                 <p className="text-neutral/90 text-sm">
-                  Ainda esperando as inscrições e resultado do SiSU? Não tem problema! Você pode solicitar
-                  reembolso total em caso de aprovação em até 3ª chamada! É só
-                  nos mandar mensagem comprovando sua aprovação.
+                  Vai fazer o SiSU e não sabe se vai precisar estudar em 2027?
+                  Sem problema! Se você for aprovado no SiSU até 28/02/2027,
+                  devolvo 100% do valor investido. É só mandar o comprovante da
+                  aprovação para o nosso suporte.
                 </p>
                 <p className="text-xs mt-2 font-medium">
-                  Atenção: O Seguro SiSU é apenas para o 1º lote da Promoção SiSU, que vai até o dia 18/01/2026.
+                  Atenção: o Seguro SiSU vale só para compras feitas na Black
+                  Fisiquei, de 16/11 a 16/12.
                 </p>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

@@ -23,7 +23,11 @@ const item: Variants = {
   },
 }
 
-export function FaqSection() {
+interface FaqSectionProps {
+  items?: typeof faqItems
+}
+
+export function FaqSection({ items = faqItems }: FaqSectionProps) {
   return (
     <section
       id="faq"
@@ -50,7 +54,7 @@ export function FaqSection() {
           viewport={{ once: true }}
           className="w-full flex flex-col mb-4"
         >
-          {faqItems.map((faqItem) => {
+          {items.map((faqItem) => {
             return (
               <AccordionItem
                 key={faqItem.key}

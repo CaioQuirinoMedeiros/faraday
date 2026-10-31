@@ -4,31 +4,32 @@ import {
   XLogoIcon,
   YoutubeLogoIcon,
 } from "@/assets/icons"
+import { instagramUrl, youtubeUrl, xUrl, threadsUrl } from "@/data/socials"
 import Link from "next/link"
 
 const socials = [
   {
     icon: InstagramLogoIcon,
     size: 16,
-    href: "https://instagram.com/thalesquirino",
+    href: instagramUrl,
     ariaLabel: "Acessar o Instagram do Fisiquei",
   },
   {
     icon: YoutubeLogoIcon,
     size: 18,
-    href: "https://youtube.com/@fisiquei",
+    href: youtubeUrl,
     ariaLabel: "Acessar o canal do Youtube do Fisiquei",
   },
   {
     icon: XLogoIcon,
     size: 15,
-    href: "https://x.com/fisiquei",
+    href: xUrl,
     ariaLabel: "Acessar o X (Twitter) do Fisiquei",
   },
   {
     icon: ThreadsLogoIcon,
     size: 16,
-    href: "https://www.threads.com/@thalesquirino",
+    href: threadsUrl,
     ariaLabel: "Acessar o Threads do Fisiquei",
   },
 ]

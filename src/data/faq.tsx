@@ -71,8 +71,8 @@ const faqRenovacao: FaqItem = {
       <strong>aluno ou ex-aluno o desconto é de 60%!</strong>{" "}
       <a
         target="_blank"
-        href="https://app.fisiquei.com.br/ofertas/extensivo-2026/checkout?coupon=RENOVABF60"
-        className="text-primary-lighter underline hover:opacity-80"
+        href="https://app.fisiquei.com.br/ofertas/extensivo-2027/checkout?coupon=RENOVABF60"
+        className="text-primary underline hover:opacity-80"
       >
         Clique aqui
       </a>{" "}
@@ -139,20 +139,110 @@ const faqSeguroSisu: FaqItem = {
   question: "Como funciona o Seguro SiSU?",
   answer: (
     <>
-      Em caso de aprovação no SiSU 2026, até 3ª chamada, você terá reembolso
-      total do valor investido. Basta mandar mensagem para nosso suporte
-      comprovando sua aprovação.
+      Quem compra na Black Fisiquei e é aprovado no SiSU até{" "}
+      <strong>28/02/2027</strong> recebe o reembolso integral do valor pago. Não
+      importa a chamada, vale a data: é só mandar o comprovante da aprovação
+      para o nosso suporte até lá.
     </>
   ),
 }
+
+const faqBlackOQueE: FaqItem = {
+  key: "black-o-que-e",
+  question: "O que é a Black Fisiquei e até quando vai?",
+  answer: (
+    <>
+      É a maior promoção do ano do Fisiquei. De <strong>16/11 a 16/12</strong>,
+      o Extensivo 2027 sai com <strong>50% de desconto</strong> usando o cupom
+      BLACKFISIQUEI. A oferta acaba às 23h59 do dia 16/12 (horário de Brasília)
+      e depois o plano volta ao preço normal de R$ 1.100.
+    </>
+  ),
+}
+
+const faqBlackPreco: FaqItem = {
+  key: "black-preco",
+  question: "Quanto fica o Extensivo 2027 na Black?",
+  answer: (
+    <>
+      De R$ 1.100 por <strong>12x de R$ 45,83</strong> no cartão ou{" "}
+      <strong>R$ 440 à vista</strong>, com o cupom BLACKFISIQUEI. Para alunos e
+      ex-alunos, com o cupom RENOVABF60, fica 12x de R$ 36,67 ou R$ 330 à vista.
+    </>
+  ),
+}
+
+const faqBlackAcesso: FaqItem = {
+  key: "black-acesso",
+  question: "Até quando vou ter acesso? Posso começar a estudar agora?",
+  answer: (
+    <>
+      O Extensivo 2027 dá acesso a toda a plataforma até{" "}
+      <strong>31/01/2028</strong>, cobrindo o ENEM 2027 e os vestibulares do fim
+      do ano. Todas as aulas já estão disponíveis, então você pode começar assim
+      que o pagamento for confirmado.
+    </>
+  ),
+}
+
+const faqBlackAlunoAtivo: FaqItem = {
+  key: "black-aluno-ativo",
+  question: "Já tenho acesso até 31/01/2027. Vale a pena renovar agora?",
+  answer: (
+    <>
+      Vale, porque o desconto de 60% do RENOVABF60 só existe durante a Black.
+      Você garante o Extensivo 2027 pelo menor preço e segue estudando sem
+      interrupção até 31/01/2028. Use o mesmo email do seu acesso atual para o
+      cupom ser validado.
+    </>
+  ),
+}
+
+const faqBlackNaoSeiSeVouEstudar: FaqItem = {
+  key: "black-nao-sei",
+  question: "Ainda não sei se vou precisar estudar em 2027. Compro agora?",
+  answer: (
+    <>
+      Esse é justamente o motivo do Seguro SiSU. Você garante os 50% OFF agora
+      e, se for aprovado no SiSU até 28/02/2027, recebe todo o dinheiro de
+      volta. Se não passar, já está com o curso do ano inteiro garantido pelo
+      menor preço.
+    </>
+  ),
+}
+
+const faqBlackVestibulares: FaqItem = {
+  key: "black-vestibulares",
+  question: "Serve para outros vestibulares além do ENEM?",
+  answer: (
+    <>
+      Sim! O curso cobre toda a Física do ensino médio, do básico ao avançado, e
+      o banco de questões tem provas de diversos vestibulares.
+    </>
+  ),
+}
+
+export const faqBlackItems = [
+  faqBlackOQueE,
+  faqBlackPreco,
+  faqSeguroSisu,
+  faqBlackNaoSeiSeVouEstudar,
+  faqRenovacao,
+  faqBlackAlunoAtivo,
+  faqBlackAcesso,
+  faqFormasPagamento,
+  faqReembolso,
+  faqBlackVestibulares,
+  faqTirarDuvidas,
+]
 
 export const faqItems = [
   faqAcessoGratuito,
   faqParaQuem,
   faqValorAcesso,
-  // faqSeguroSisu,
+  faqSeguroSisu,
   faqFormasPagamento,
-  // faqRenovacao,
+  faqRenovacao,
   faqPossuiQuestoes,
   faqTirarDuvidas,
   faqAulasGravadas,
